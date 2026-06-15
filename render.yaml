@@ -1,0 +1,22 @@
+# Blueprint de Render para Pinturillo Chile (despliegue todo-en-uno).
+# El servidor sirve el cliente + los sockets en el mismo puerto, asi que no hay
+# que configurar CORS ni una URL de backend aparte.
+#
+# Como usarlo:
+#   1) Sube este repo a GitHub.
+#   2) En render.com:  New +  ->  Blueprint  ->  conecta el repo  ->  Apply.
+#   3) Render lee este archivo, construye y publica. Te da una URL fija.
+services:
+  - type: web
+    name: pinturillo-chile
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /salud
+    autoDeploy: true
+    envVars:
+      # Pin de Node (tambien esta en .node-version).
+      - key: NODE_VERSION
+        value: "22"

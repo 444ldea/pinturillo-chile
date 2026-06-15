@@ -1,0 +1,24 @@
+{
+  "name": "pinturillo-chile",
+  "version": "1.0.0",
+  "description": "Juego web multijugador de dibujar y adivinar con tematica chilena (estilo skribbl.io / Pinturillo).",
+  "private": true,
+  "workspaces": [
+    "servidor",
+    "cliente"
+  ],
+  "scripts": {
+    "dev": "concurrently -n servidor,cliente -c blue,green \"npm:dev:servidor\" \"npm:dev:cliente\"",
+    "dev:servidor": "npm run dev --workspace=servidor",
+    "dev:cliente": "npm run dev --workspace=cliente",
+    "build": "npm run build --workspace=servidor && npm run build --workspace=cliente",
+    "start": "npm run start --workspace=servidor",
+    "online": "npm run build && node scripts/jugar-online.cjs"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,2131 @@
+{
+  "version": 5,
+  "cantidad": 425,
+  "palabras": [
+    {
+      "palabra": "Empanada",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Humita",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Sopaipilla",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Choripán",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cazuela",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Mote",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Chorrillana",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Milcao",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Chacarero",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Alfajor",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Completo",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Calzones",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Chilenito",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Leche",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Manjar",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Pebre",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Chancho",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Longaniza",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Prieta",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Caldo",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Charquicán",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Curanto",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Porotos",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Tomaticán",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Carbonada",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Picante",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Chicha",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Ulpo",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Papaya",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Lúcuma",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Chirimoya",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Merquén",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cochayuyo",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Luche",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Piure",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Loco",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Machas",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Chupe",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Locos",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Erizos",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Pulpo",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Congrio",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Reineta",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Tomate",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Palta",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Frambuesa",
+      "categoria": "Comida",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Moái",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Palafito",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Torres",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Géiser",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Salar",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Caleta",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Iglesia",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Aduana",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cementerio",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Faro",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Muelle",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Termas",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Laguna",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Glaciar",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Desierto",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Archipiélago",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Castillo",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Fuerte",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Campanario",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Capilla",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Portuaria",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cabaña",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Ruca",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Estación",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Anfiteatro",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Mercado",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Balneario",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Piscina",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Mirador",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Parque",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Reserva",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Monumento",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Volcán",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Biblioteca",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Catedral",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Municipalidad",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Plaza",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Estadio",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Aeropuerto",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Puerto",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Túnel",
+      "categoria": "Lugares",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cóndor",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Puma",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Chinchilla",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Huemul",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Pudú",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Lobo",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Flamenco",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Picaflor",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Vizcacha",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Tricahue",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Guanaco",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Alpaca",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Llama",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Vicuña",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Zorro",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Coipo",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Nutria",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Chungungo",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Ñandú",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Garza",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Pelícano",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Pingüino",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Foca",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Delfín",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Ballena",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Tiburón",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Raya",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Camarón",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cangrejo",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Calamar",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Erizo",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Lapa",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Jaiba",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Trucha",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Pejerrey",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Corvina",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Lenguado",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Tenca",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Jote",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Queltehue",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Diuca",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Jilguero",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Chincol",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Perdiz",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Tortuga",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Lagarto",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Pato",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Culebra",
+      "categoria": "Animales",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cueca",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Huaso",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Machi",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Chamanto",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Trompo",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Volantín",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Trutruca",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Kultrun",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Poncho",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Manta",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Sombrero",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Espuela",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Montura",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Rodeo",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Fonda",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Ramada",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Pifilka",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cascahuilla",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Chemamull",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Rehue",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Choapino",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Tejido",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Alfarería",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cestería",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Witral",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Vasija",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Guitarra",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Acordeón",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Bombo",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Arpa",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Charango",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Zampoña",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Bandurria",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cajón",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Canelo",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Pehuén",
+      "categoria": "Cultura",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Duna",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Acantilado",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cañón",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Quebrada",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Marisma",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Turbera",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Pantano",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Estepa",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Matorral",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Bosque",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Selva",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Tundra",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Páramo",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Puna",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Altiplano",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cordillera",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cerro",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cumbre",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Nevado",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cráter",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Caldera",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Fumarola",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Estalactita",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Estalagmita",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cueva",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Caverna",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Gruta",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Arroyo",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Torrente",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cascada",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Catarata",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Peñasco",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Farallón",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Islote",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Arrecife",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Fiordo",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Estuario",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Delta",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Planicie",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Meseta",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Copihue",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Araucaria",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Alerce",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Quillay",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Litre",
+      "categoria": "Naturaleza",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Metawe",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Tiesto",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cántaro",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Tinaja",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Mate",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Bombilla",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Molinillo",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Comal",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Paila",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Chupalla",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Arado",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Yugo",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Azadón",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Hoz",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Hacha",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Soga",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Lazo",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Boleadora",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Honda",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Carcaj",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Flecha",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Lanza",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Maza",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Escudo",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Telar",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Huso",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Rueca",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Aguja",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Dedal",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Tijera",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Canasto",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cesto",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Topo",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Pelota",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Arco",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Carreta",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Tinaco",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Piedra",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Mortero",
+      "categoria": "Objetos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Fútbol",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Tenis",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Boxeo",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Ciclismo",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Esquí",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Surf",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Vela",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Remo",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Kayak",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Escalada",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Palín",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Rayuela",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Maratón",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Triatlón",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Voleibol",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Básquetbol",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Rugby",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Hockey",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Polo",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Equitación",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Esgrima",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Judo",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Karate",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Taekwondo",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Natación",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Waterpolo",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Atletismo",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Bicicleta",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Motocross",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Rally",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Parapente",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Windsurf",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Kitesurf",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Piragüismo",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Snowboard",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Patinaje",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Gimnasia",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Lucha",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Tiro",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Arquería",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Pentatlón",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Decatlón",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Salto",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Ciclomontaña",
+      "categoria": "Deportes",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Bandera",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Moneda",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Quipu",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Canoa",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Balsa",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Galeón",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Bergantín",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Mosquete",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Arcabuz",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Rodela",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Locomotora",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Velero",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Submarino",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Bayoneta",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Pergamino",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Estampilla",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Telegrama",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Daguerrotipo",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Fonógrafo",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Radio",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Teléfono",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Linterna",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Tambo",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Unku",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Acllahuasi",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Pukará",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Chullpa",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Huara",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Diligencia",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Galera",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Biplano",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Obús",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Pica",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Adarga",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Sello",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Medalla",
+      "categoria": "Historia",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Palacio de La Moneda",
+      "categoria": "Monumentos",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Mano del Desierto",
+      "categoria": "Monumentos",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Morro de Arica",
+      "categoria": "Monumentos",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Faro de La Serena",
+      "categoria": "Monumentos",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Reloj de Flores de Viña del Mar",
+      "categoria": "Monumentos",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Palafitos de Chiloé",
+      "categoria": "Monumentos",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Costanera Center",
+      "categoria": "Monumentos",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Teatro del Lago de Frutillar",
+      "categoria": "Monumentos",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Viaducto del Malleco",
+      "categoria": "Monumentos",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Oficina Salitrera Humberstone",
+      "categoria": "Monumentos",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Torres del Paine",
+      "categoria": "Maravillas naturales",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Valle de la Luna",
+      "categoria": "Maravillas naturales",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Volcán Villarrica",
+      "categoria": "Maravillas naturales",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Capillas de Mármol",
+      "categoria": "Maravillas naturales",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Saltos del Laja",
+      "categoria": "Maravillas naturales",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Geysers del Tatio",
+      "categoria": "Maravillas naturales",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Laguna San Rafael",
+      "categoria": "Maravillas naturales",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Radal Siete Tazas",
+      "categoria": "Maravillas naturales",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Cajón del Maipo",
+      "categoria": "Maravillas naturales",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Ojos del Caburgua",
+      "categoria": "Maravillas naturales",
+      "multipalabra": true
+    },
+    {
+      "palabra": "San Pedro de Atacama",
+      "categoria": "Destinos",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Isla de Pascua (Rapa Nui)",
+      "categoria": "Destinos",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Valparaíso",
+      "categoria": "Destinos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Pucón",
+      "categoria": "Destinos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Frutillar",
+      "categoria": "Destinos",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Puerto Varas",
+      "categoria": "Destinos",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Bahía Inglesa",
+      "categoria": "Destinos",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Punta Arenas",
+      "categoria": "Destinos",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Carretera Austral",
+      "categoria": "Destinos",
+      "multipalabra": true
+    },
+    {
+      "palabra": "San Alfonso del Mar",
+      "categoria": "Destinos",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Cerro San Cristóbal",
+      "categoria": "Cerros y parques",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Cerro Santa Lucía",
+      "categoria": "Cerros y parques",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Parque Metropolitano",
+      "categoria": "Cerros y parques",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Cerro Alegre",
+      "categoria": "Cerros y parques",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Cerro Concepción",
+      "categoria": "Cerros y parques",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Quinta Normal",
+      "categoria": "Cerros y parques",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Parque Bicentenario",
+      "categoria": "Cerros y parques",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Cerro Conun Huenu",
+      "categoria": "Cerros y parques",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Cerro Ñielol",
+      "categoria": "Cerros y parques",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Parque de las Esculturas",
+      "categoria": "Cerros y parques",
+      "multipalabra": true
+    },
+    {
+      "palabra": "El Trauco",
+      "categoria": "Mitología chilota",
+      "multipalabra": true
+    },
+    {
+      "palabra": "La Pincoya",
+      "categoria": "Mitología chilota",
+      "multipalabra": true
+    },
+    {
+      "palabra": "El Caleuche",
+      "categoria": "Mitología chilota",
+      "multipalabra": true
+    },
+    {
+      "palabra": "El Invunche",
+      "categoria": "Mitología chilota",
+      "multipalabra": true
+    },
+    {
+      "palabra": "El Alicanto",
+      "categoria": "Leyendas del norte",
+      "multipalabra": true
+    },
+    {
+      "palabra": "La Lola",
+      "categoria": "Leyendas del norte",
+      "multipalabra": true
+    },
+    {
+      "palabra": "La Añanuca",
+      "categoria": "Leyendas del norte",
+      "multipalabra": true
+    },
+    {
+      "palabra": "La Tirana",
+      "categoria": "Leyendas del norte",
+      "multipalabra": true
+    },
+    {
+      "palabra": "El Tesoro de Guayacán",
+      "categoria": "Leyendas del norte",
+      "multipalabra": true
+    },
+    {
+      "palabra": "La Calchona",
+      "categoria": "Leyendas urbanas",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Tué-Tué",
+      "categoria": "Leyendas urbanas",
+      "multipalabra": false
+    },
+    {
+      "palabra": "El Culebrón",
+      "categoria": "Leyendas urbanas",
+      "multipalabra": true
+    },
+    {
+      "palabra": "La Rubia de Kennedy",
+      "categoria": "Leyendas urbanas",
+      "multipalabra": true
+    },
+    {
+      "palabra": "El Mandinga",
+      "categoria": "Leyendas urbanas",
+      "multipalabra": true
+    },
+    {
+      "palabra": "El Chupacabras",
+      "categoria": "Leyendas urbanas",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Trentren-Vilu",
+      "categoria": "Mitología mapuche",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Caicai-Vilu",
+      "categoria": "Mitología mapuche",
+      "multipalabra": false
+    },
+    {
+      "palabra": "El Cuero",
+      "categoria": "Mitología mapuche",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Colo-Colo",
+      "categoria": "Fútbol Primera A",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Universidad de Chile",
+      "categoria": "Fútbol Primera A",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Universidad Católica",
+      "categoria": "Fútbol Primera A",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Unión Española",
+      "categoria": "Fútbol Primera A",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Audax Italiano",
+      "categoria": "Fútbol Primera A",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Palestino",
+      "categoria": "Fútbol Primera A",
+      "multipalabra": false
+    },
+    {
+      "palabra": "O'Higgins",
+      "categoria": "Fútbol Primera A",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Everton",
+      "categoria": "Fútbol Primera A",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Huachipato",
+      "categoria": "Fútbol Primera A",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Coquimbo Unido",
+      "categoria": "Fútbol Primera A",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Deportes Iquique",
+      "categoria": "Fútbol Primera A",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Ñublense",
+      "categoria": "Fútbol Primera A",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Unión La Calera",
+      "categoria": "Fútbol Primera A",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Cobresal",
+      "categoria": "Fútbol Primera A",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Deportes La Serena",
+      "categoria": "Fútbol Primera A",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Deportes Limache",
+      "categoria": "Fútbol Primera A",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Santiago Wanderers",
+      "categoria": "Fútbol Primera B",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Magallanes",
+      "categoria": "Fútbol Primera B",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Cobreloa",
+      "categoria": "Fútbol Primera B",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Deportes Copiapó",
+      "categoria": "Fútbol Primera B",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Deportes Temuco",
+      "categoria": "Fútbol Primera B",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Rangers de Talca",
+      "categoria": "Fútbol Primera B",
+      "multipalabra": true
+    },
+    {
+      "palabra": "San Marcos de Arica",
+      "categoria": "Fútbol Primera B",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Universidad de Concepción",
+      "categoria": "Fútbol Primera B",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Unión San Felipe",
+      "categoria": "Fútbol Primera B",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Curicó Unido",
+      "categoria": "Fútbol Primera B",
+      "multipalabra": true
+    },
+    {
+      "palabra": "San Luis de Quillota",
+      "categoria": "Fútbol Primera B",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Deportes Antofagasta",
+      "categoria": "Fútbol Primera B",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Deportes Recoleta",
+      "categoria": "Fútbol Primera B",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Deportes Santa Cruz",
+      "categoria": "Fútbol Primera B",
+      "multipalabra": true
+    },
+    {
+      "palabra": "Barnechea",
+      "categoria": "Fútbol Primera B",
+      "multipalabra": false
+    },
+    {
+      "palabra": "Deportes Concepción",
+      "categoria": "Fútbol Primera B",
+      "multipalabra": true
+    }
+  ]
+}
