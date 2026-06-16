@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useJuego } from "../estado";
+import { colorJugador } from "../util";
 
 export function Chat() {
   const { mensajes, enviarMensaje, soyDibujante, sala, yo } = useJuego();
@@ -34,7 +35,17 @@ export function Chat() {
           <div key={m.id} className={`msg ${m.tipo}`}>
             {m.tipo === "normal" || m.tipo === "privado" ? (
               <>
-                <span className="msg-nombre">{m.nombre}:</span> {m.texto}
+                <span
+                  className="msg-nombre"
+                  style={
+                    m.jugadorId
+                      ? { color: colorJugador(m.jugadorId) }
+                      : undefined
+                  }
+                >
+                  {m.nombre}:
+                </span>{" "}
+                {m.texto}
                 {m.tipo === "privado" && <span className="candado"> 🔒</span>}
               </>
             ) : (

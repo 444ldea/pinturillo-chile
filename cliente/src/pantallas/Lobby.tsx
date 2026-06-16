@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useJuego } from "../estado";
 import { BotonInvitar } from "../componentes/BotonInvitar";
+import { Avatar } from "../componentes/Avatar";
+import { EditorAvatar } from "../componentes/EditorAvatar";
 
 export function Lobby() {
   const {
@@ -11,6 +13,7 @@ export function Lobby() {
     salirSala,
   } = useJuego();
   const [copiado, setCopiado] = useState(false);
+  const [editorAbierto, setEditorAbierto] = useState(false);
 
   if (!sala) return null;
   const cfg = sala.config;
@@ -116,11 +119,19 @@ export function Lobby() {
         </section>
 
         <section className="tarjeta panel-jugadores">
-          <h3>Jugadores ({conectados})</h3>
+          <div className="pj-cabecera">
+            <h3>Jugadores ({conectados})</h3>
+            <button
+              className="btn secundario chico"
+              onClick={() => setEditorAbierto(true)}
+            >
+              ✏️ Mi avatar
+            </button>
+          </div>
           <ul className="lista-lobby">
             {sala.jugadores.map((j) => (
               <li key={j.id} className={j.conectado ? "" : "desconectado"}>
-                <span className="avatar">{j.nombre.slice(0, 1).toUpperCase()}</span>
+                <Avatar id={j.id} nombre={j.nombre} avatar={j.avatar} />
                 <span className="nombre">{j.nombre}</span>
                 {j.esAnfitrion && <span className="etiqueta">★ anfitrión</span>}
                 {!j.conectado && <span className="etiqueta gris">offline</span>}
@@ -129,6 +140,10 @@ export function Lobby() {
           </ul>
         </section>
       </div>
+
+      {editorAbierto && (
+        <EditorAvatar onCerrar={() => setEditorAbierto(false)} />
+      )}
     </div>
   );
 }

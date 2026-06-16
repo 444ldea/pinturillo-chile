@@ -4,8 +4,8 @@ export function ResultadosRonda() {
   const { resultadosRonda, sala } = useJuego();
   if (!resultadosRonda || !sala) return null;
 
-  const { palabra, categoria, resultados } = resultadosRonda;
-  const dibujanteId = sala.dibujanteId;
+  const { palabra, categoria, resultados, dibujanteId } = resultadosRonda;
+  const dibujante = resultados.find((r) => r.jugadorId === dibujanteId);
 
   // Orden: primero quienes ganaron mas esta ronda.
   const filas = [...resultados].sort(
@@ -17,7 +17,15 @@ export function ResultadosRonda() {
       <div className="tarjeta resultados">
         <p className="r-categoria">{categoria}</p>
         <h2 className="r-palabra">{palabra}</h2>
-        <p className="ayuda">La palabra era…</p>
+        <p className="ayuda">
+          La palabra era…
+          {dibujante && (
+            <>
+              {" "}
+              · la dibujó <strong>{dibujante.nombre}</strong>
+            </>
+          )}
+        </p>
 
         <ul className="r-lista">
           {filas.map((r) => {

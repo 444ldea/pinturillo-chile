@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useJuego } from "./estado";
 import { Inicio } from "./pantallas/Inicio";
 import { Lobby } from "./pantallas/Lobby";
@@ -19,13 +19,22 @@ export function App() {
     conectado,
     salaObjetivo,
     errorEntrada,
+    toast,
   } = useJuego();
+  const [toastVisible, setToastVisible] = useState<string | null>(null);
 
   useEffect(() => {
     if (!error) return;
     const t = setTimeout(limpiarError, 4000);
     return () => clearTimeout(t);
   }, [error, limpiarError]);
+
+  useEffect(() => {
+    if (!toast) return;
+    setToastVisible(toast.texto);
+    const t = setTimeout(() => setToastVisible(null), 2600);
+    return () => clearTimeout(t);
+  }, [toast]);
 
   const tieneNombre = !!localStorage.getItem("pinturillo_nombre");
 
@@ -55,6 +64,7 @@ export function App() {
           {error}
         </div>
       )}
+      {toastVisible && <div className="toast-info">{toastVisible}</div>}
       {pantalla}
     </div>
   );

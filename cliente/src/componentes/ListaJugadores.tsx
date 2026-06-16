@@ -1,7 +1,8 @@
 import { useJuego } from "../estado";
+import { Avatar } from "./Avatar";
 
 export function ListaJugadores() {
-  const { sala, miId } = useJuego();
+  const { sala, miId, ultimoAcierto } = useJuego();
   if (!sala) return null;
 
   const ordenados = [...sala.jugadores].sort((a, b) => b.puntaje - a.puntaje);
@@ -25,7 +26,8 @@ export function ListaJugadores() {
             >
               <span className="puesto">{i + 1}</span>
               <span className="nombre">
-                {j.nombre}
+                <Avatar id={j.id} nombre={j.nombre} avatar={j.avatar} size={22} />
+                <span className="nombre-txt">{j.nombre}</span>
                 {soyYo && <span className="tu"> (tú)</span>}
               </span>
               <span className="iconos">
@@ -39,6 +41,13 @@ export function ListaJugadores() {
                 {!j.conectado && <span title="offline">⚠️</span>}
               </span>
               <span className="puntos">{j.puntaje}</span>
+              {ultimoAcierto &&
+                ultimoAcierto.jugadorId === j.id &&
+                ultimoAcierto.puntos > 0 && (
+                  <span key={ultimoAcierto.ts} className="flota-puntos">
+                    +{ultimoAcierto.puntos}
+                  </span>
+                )}
             </li>
           );
         })}

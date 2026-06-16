@@ -1,4 +1,4 @@
-import type { JSX } from "react";
+import { useEffect, useRef, type JSX } from "react";
 
 interface Props {
   mascara: (string | null)[] | null;
@@ -6,12 +6,26 @@ interface Props {
 
 /**
  * Renderiza la mascara como guiones monoespaciados, con los espacios visibles
- * como separacion mayor entre grupos de palabras.
- *   letra -> se muestra (preposicion pre-rellenada o pista revelada)
- *   null  -> "_"
- *   " "   -> separacion entre palabras
+ * como separacion mayor entre grupos de palabras. Anima la letra cuando una
+ * pista la revela, y muestra el conteo de letras.
  */
 export function Guiones({ mascara }: Props) {
+  const prev = useRef<(string | null)[] | null>(null);
+
+  // Detecta letras recien reveladas (misma palabra, una pista cayo).
+  const recien = new Set<number>();
+  if (mascara && prev.current && prev.current.length === mascara.length) {
+    for (let i = 0; i < mascara.length; i++) {
+      if (prev.current[i] === null && mascara[i] && mascara[i] !== " ") {
+        recien.add(i);
+      }
+    }
+  }
+
+  useEffect(() => {
+    prev.current = mascara;
+  }, [mascara]);
+
   if (!mascara || mascara.length === 0) {
     return <div className="guiones vacio">…</div>;
   }
@@ -28,7 +42,10 @@ export function Guiones({ mascara }: Props) {
       );
     } else {
       elementos.push(
-        <span key={i} className="g-letra revelada">
+        <span
+          key={i}
+          className={`g-letra revelada ${recien.has(i) ? "recien" : ""}`}
+        >
           {c}
         </span>
       );
@@ -37,8 +54,11 @@ export function Guiones({ mascara }: Props) {
 
   const totalLetras = mascara.filter((c) => c !== " ").length;
   return (
-    <div className="guiones" aria-label={`Palabra de ${totalLetras} letras`}>
-      {elementos}
+    <div className="guiones-wrap">
+      <div className="guiones" aria-label={`Palabra de ${totalLetras} letras`}>
+        {elementos}
+      </div>
+      <span className="guiones-conteo">{totalLetras} letras</span>
     </div>
   );
 }

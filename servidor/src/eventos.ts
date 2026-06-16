@@ -202,6 +202,7 @@ export function registrarEventos(io: IO): void {
     // Estado por-socket (rate limiting).
     socket.data = {
       ventanaTrazos: [],
+      ventanaVivo: [],
       ventanaMensajes: [],
     } as DatosSocket;
 
@@ -295,6 +296,19 @@ export function registrarEventos(io: IO): void {
       iniciarPartida(sala);
     });
 
+    // -------------------------------------------------------- avatar
+    socket.on("actualizar_avatar", (p) => {
+      const ctx = contexto(socket);
+      if (!ctx) return;
+      const { sala, jugador } = ctx;
+      if (!permitir(datos(socket).ventanaMensajes, 8)) return;
+      const a = p?.avatar;
+      if (typeof a !== "string" || !a.startsWith("data:image/")) return;
+      if (a.length > 14000) return; // tope ~10KB
+      jugador.avatar = a;
+      difundirEstado(sala);
+    });
+
     // -------------------------------------------------------- elegir palabra
     socket.on("elegir_palabra", (p) => {
       const ctx = contexto(socket);
@@ -302,7 +316,12 @@ export function registrarEventos(io: IO): void {
       const { sala } = ctx;
       if (sala.estado !== "eligiendo" || !esDibujante(sala, socket.id)) return;
       const indice = Number(p?.indice);
-      if (![0, 1, 2].includes(indice)) return;
+      if (
+        !Number.isInteger(indice) ||
+        indice < 0 ||
+        indice >= sala.opcionesPalabras.length
+      )
+        return;
       elegirPalabra(sala, indice);
     });
 
@@ -317,6 +336,43 @@ export function registrarEventos(io: IO): void {
       if (!trazo) return;
       if (sala.trazos.length < MAX_TRAZOS_SALA) sala.trazos.push(trazo);
       socket.to(sala.codigo).emit("trazo_nuevo", { trazo });
+    });
+
+    // Trazo en vivo (preview en tiempo real, no se persiste; el trazo final
+    // llega por dibujar_trazo). Solo se relaya a los demas.
+    socket.on("trazo_vivo", (p) => {
+      const ctx = contexto(socket);
+      if (!ctx) return;
+      const { sala } = ctx;
+      if (sala.estado !== "dibujando" || !esDibujante(sala, socket.id)) return;
+      if (!permitir(datos(socket).ventanaVivo, 40)) return; // ~40/s
+      if (!Array.isArray(p?.puntos) || p.puntos.length === 0) return;
+      const puntos = p.puntos
+        .slice(0, MAX_PUNTOS_TRAZO)
+        .map((q) => ({ x: clamp01((q as any)?.x), y: clamp01((q as any)?.y) }));
+      const grosor = clamp(Number(p?.grosor) || 2, 2, 40);
+      const color =
+        typeof p?.color === "string" && /^#[0-9a-fA-F]{3,8}$/.test(p.color)
+          ? p.color
+          : "#000000";
+      socket.to(sala.codigo).emit("trazo_vivo", { puntos, color, grosor });
+    });
+
+    socket.on("trazo_vivo_fin", () => {
+      const ctx = contexto(socket);
+      if (!ctx) return;
+      const { sala } = ctx;
+      if (!esDibujante(sala, socket.id)) return;
+      socket.to(sala.codigo).emit("trazo_vivo_fin", {});
+    });
+
+    socket.on("deshacer_trazo", () => {
+      const ctx = contexto(socket);
+      if (!ctx) return;
+      const { sala } = ctx;
+      if (sala.estado !== "dibujando" || !esDibujante(sala, socket.id)) return;
+      sala.trazos.pop();
+      io.to(sala.codigo).emit("lienzo_completo", { trazos: sala.trazos });
     });
 
     socket.on("limpiar_lienzo", () => {

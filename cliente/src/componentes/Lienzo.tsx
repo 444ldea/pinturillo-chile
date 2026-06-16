@@ -4,19 +4,33 @@ import { dibujarUnTrazo, renderLienzo } from "../dibujo";
 
 const ANCHO = 900;
 const ALTO = 600;
+const MS_EMIT = 55; // ~18 emisiones/s del trazo en vivo
 
 interface Props {
   trazos: Trazo[];
   esDibujante: boolean;
   color: string;
   grosor: number;
+  trazoVivoRemoto: Trazo | null; // preview en vivo del dibujante (para los demas)
   onTrazo: (trazo: Trazo) => void;
+  onTrazoVivo: (puntos: Punto[]) => void;
+  onTrazoVivoFin: () => void;
 }
 
-export function Lienzo({ trazos, esDibujante, color, grosor, onTrazo }: Props) {
+export function Lienzo({
+  trazos,
+  esDibujante,
+  color,
+  grosor,
+  trazoVivoRemoto,
+  onTrazo,
+  onTrazoVivo,
+  onTrazoVivoFin,
+}: Props) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const dibujando = useRef(false);
   const trazoActual = useRef<Punto[]>([]);
+  const ultimoEmit = useRef(0);
 
   function redibujar() {
     const canvas = canvasRef.current;
@@ -24,15 +38,18 @@ export function Lienzo({ trazos, esDibujante, color, grosor, onTrazo }: Props) {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
     renderLienzo(ctx, trazos, ANCHO, ALTO);
-    if (trazoActual.current.length > 0) {
+    if (esDibujante && trazoActual.current.length > 0) {
       dibujarUnTrazo(ctx, { puntos: trazoActual.current, color, grosor }, ANCHO, ALTO);
+    }
+    if (!esDibujante && trazoVivoRemoto) {
+      dibujarUnTrazo(ctx, trazoVivoRemoto, ANCHO, ALTO);
     }
   }
 
   useEffect(() => {
     redibujar();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [trazos]);
+  }, [trazos, trazoVivoRemoto, esDibujante]);
 
   function puntoDesdeEvento(e: React.PointerEvent<HTMLCanvasElement>): Punto {
     const canvas = canvasRef.current!;
@@ -47,6 +64,7 @@ export function Lienzo({ trazos, esDibujante, color, grosor, onTrazo }: Props) {
     e.preventDefault();
     dibujando.current = true;
     trazoActual.current = [puntoDesdeEvento(e)];
+    ultimoEmit.current = 0;
     canvasRef.current?.setPointerCapture(e.pointerId);
     redibujar();
   }
@@ -56,6 +74,12 @@ export function Lienzo({ trazos, esDibujante, color, grosor, onTrazo }: Props) {
     e.preventDefault();
     trazoActual.current.push(puntoDesdeEvento(e));
     redibujar();
+    // Emite el trazo en vivo (throttle) para que los demas lo vean en tiempo real.
+    const ahora = performance.now();
+    if (ahora - ultimoEmit.current >= MS_EMIT) {
+      ultimoEmit.current = ahora;
+      onTrazoVivo(trazoActual.current.slice());
+    }
   }
 
   function terminarTrazo() {
@@ -64,8 +88,10 @@ export function Lienzo({ trazos, esDibujante, color, grosor, onTrazo }: Props) {
     const puntos = trazoActual.current;
     trazoActual.current = [];
     if (puntos.length > 0) {
-      onTrazo({ puntos, color, grosor });
+      onTrazoVivo(puntos.slice()); // flush ultimo
+      onTrazo({ puntos, color, grosor }); // commit
     }
+    onTrazoVivoFin();
   }
 
   return (

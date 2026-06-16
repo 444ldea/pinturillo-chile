@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import qrcode from "qrcode-generator";
 import { useJuego } from "../estado";
 
 interface Props {
@@ -8,13 +9,13 @@ interface Props {
 export function BotonInvitar({ compacto = false }: Props) {
   const { enlaceSala, codigo } = useJuego();
   const [copiado, setCopiado] = useState(false);
+  const [mostrarQR, setMostrarQR] = useState(false);
   if (!enlaceSala) return null;
 
   const texto = `¡Vente a dibujar! 🎨 Sala de Pinturillo Chile: ${enlaceSala}`;
   const urlWhatsapp = `https://wa.me/?text=${encodeURIComponent(texto)}`;
 
   async function invitar() {
-    // Movil: menu de compartir nativo (WhatsApp, etc.)
     if (navigator.share) {
       try {
         await navigator.share({
@@ -24,10 +25,9 @@ export function BotonInvitar({ compacto = false }: Props) {
         });
         return;
       } catch {
-        // el usuario cancelo: caemos a copiar
+        /* cancelado: copiar */
       }
     }
-    // Desktop o sin share: copiar al portapapeles
     try {
       await navigator.clipboard.writeText(enlaceSala!);
       setCopiado(true);
@@ -41,6 +41,13 @@ export function BotonInvitar({ compacto = false }: Props) {
     <div className={`invitar ${compacto ? "compacto" : ""}`}>
       <button className="btn primario" onClick={invitar}>
         {copiado ? "¡Link copiado!" : "🔗 Invitar amigos"}
+      </button>
+      <button
+        className="btn secundario"
+        onClick={() => setMostrarQR(true)}
+        title="Mostrar código QR"
+      >
+        📷 QR
       </button>
       {!compacto && (
         <a
@@ -57,6 +64,32 @@ export function BotonInvitar({ compacto = false }: Props) {
           {codigo}
         </span>
       )}
+
+      {mostrarQR && (
+        <ModalQR enlace={enlaceSala} onCerrar={() => setMostrarQR(false)} />
+      )}
+    </div>
+  );
+}
+
+function ModalQR({ enlace, onCerrar }: { enlace: string; onCerrar: () => void }) {
+  const dataUrl = useMemo(() => {
+    const qr = qrcode(0, "M");
+    qr.addData(enlace);
+    qr.make();
+    return qr.createDataURL(6, 4);
+  }, [enlace]);
+
+  return (
+    <div className="overlay" onClick={onCerrar}>
+      <div className="tarjeta qr-modal" onClick={(e) => e.stopPropagation()}>
+        <h2>Escanea para entrar</h2>
+        <img className="qr-img" src={dataUrl} alt="Código QR de la sala" />
+        <p className="ayuda qr-enlace">{enlace}</p>
+        <button className="btn primario" onClick={onCerrar}>
+          Cerrar
+        </button>
+      </div>
     </div>
   );
 }

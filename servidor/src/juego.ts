@@ -13,7 +13,7 @@ import {
   Sala,
 } from "./tipos";
 import { jugadoresReales, vistaPublica } from "./salas";
-import { elegirTresOpciones } from "./palabras";
+import { elegirOpciones } from "./palabras";
 import {
   calcularPistasProgramadas,
   construirMascara,
@@ -26,6 +26,7 @@ type IO = Server<EventosClienteAServidor, EventosServidorACliente>;
 const SEGUNDOS_ELECCION = 10;
 const MS_ENTRE_RONDAS = 6000;
 const MS_GRACIA_DIBUJANTE = 15000;
+const OPCIONES_POR_RONDA = 5;
 
 let io: IO;
 export function inicializarJuego(servidor: IO): void {
@@ -127,7 +128,7 @@ function comenzarEleccion(sala: Sala): void {
   sala.palabraSecreta = null;
   sala.mascara = [];
   sala.trazos = [];
-  sala.opcionesPalabras = elegirTresOpciones(sala.palabrasUsadas);
+  sala.opcionesPalabras = elegirOpciones(sala.palabrasUsadas, OPCIONES_POR_RONDA);
 
   const dibujante = dibujanteActual(sala);
   if (!dibujante) {
@@ -248,6 +249,7 @@ export function registrarAcierto(sala: Sala, jugadorId: string): void {
     jugadorId: jugador.id,
     nombre: jugador.nombre,
     orden,
+    puntos: pts,
   });
   difundirEstado(sala);
   verificarFinRonda(sala);
@@ -308,6 +310,7 @@ export function terminarRonda(sala: Sala, dibujanteAbandono = false): void {
   io.to(sala.codigo).emit("ronda_terminada", {
     palabra: sala.palabraSecreta ?? "",
     categoria: sala.categoriaActual ?? "",
+    dibujanteId: dibujante ? dibujante.id : null,
     resultados,
   });
   difundirEstado(sala);

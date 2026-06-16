@@ -83,6 +83,7 @@ export function jugadorPublico(j: Jugador): JugadorPublico {
     esAnfitrion: j.esAnfitrion,
     conectado: j.conectado,
     espectador: j.espectador,
+    avatar: j.avatar,
     haAcertadoEstaRonda: j.haAcertadoEstaRonda,
     ordenAcierto: j.ordenAcierto,
   };
@@ -135,6 +136,7 @@ export function crearSala(
     esAnfitrion: true,
     conectado: true,
     espectador: false,
+    avatar: null,
     haAcertadoEstaRonda: false,
     ordenAcierto: null,
   };
@@ -210,6 +212,7 @@ export function unirseOReconectar(
     esAnfitrion: false,
     conectado: true,
     espectador: lleno || comoEspectador,
+    avatar: null,
     haAcertadoEstaRonda: false,
     ordenAcierto: null,
   };

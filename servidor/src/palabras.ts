@@ -70,38 +70,41 @@ export interface OpcionPalabra {
 }
 
 /**
- * Elige 3 palabras de 3 categorias distintas, sin repetir las ya usadas.
- * Si no quedan 3 categorias distintas, relaja la restriccion.
+ * Elige `cantidad` palabras de categorias distintas, sin repetir las ya usadas.
+ * Si no quedan suficientes categorias distintas, relaja la restriccion.
  * Si el pozo se agoto del todo, reutiliza el banco completo.
  */
-export function elegirTresOpciones(usadas: Set<string>): OpcionPalabra[] {
+export function elegirOpciones(
+  usadas: Set<string>,
+  cantidad = 5
+): OpcionPalabra[] {
   const disponibles = mezclar(banco.filter((p) => !usadas.has(p.palabra)));
   const elegidas: EntradaPalabra[] = [];
   const cats = new Set<string>();
 
-  // 1) tres categorias distintas
+  // 1) categorias distintas
   for (const p of disponibles) {
     if (cats.has(p.categoria)) continue;
     elegidas.push(p);
     cats.add(p.categoria);
-    if (elegidas.length === 3) break;
+    if (elegidas.length === cantidad) break;
   }
 
   // 2) relajar: cualquier palabra no usada
-  if (elegidas.length < 3) {
+  if (elegidas.length < cantidad) {
     for (const p of disponibles) {
       if (elegidas.includes(p)) continue;
       elegidas.push(p);
-      if (elegidas.length === 3) break;
+      if (elegidas.length === cantidad) break;
     }
   }
 
   // 3) pozo agotado: reutilizar banco completo
-  if (elegidas.length < 3) {
+  if (elegidas.length < cantidad) {
     for (const p of mezclar(banco)) {
       if (elegidas.includes(p)) continue;
       elegidas.push(p);
-      if (elegidas.length === 3) break;
+      if (elegidas.length === cantidad) break;
     }
   }
 

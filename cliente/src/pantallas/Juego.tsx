@@ -6,6 +6,7 @@ import { ListaJugadores } from "../componentes/ListaJugadores";
 import { Chat } from "../componentes/Chat";
 import { SelectorPalabra } from "../componentes/SelectorPalabra";
 import { BotonInvitar } from "../componentes/BotonInvitar";
+import { Celebracion } from "../componentes/Celebracion";
 import { ResultadosRonda } from "./ResultadosRonda";
 
 const PALETA = [
@@ -23,7 +24,11 @@ export function Juego() {
     sala,
     soyDibujante,
     trazos,
+    trazoVivoRemoto,
     dibujarTrazo,
+    emitirTrazoVivo,
+    emitirTrazoVivoFin,
+    deshacerTrazo,
     limpiarLienzo,
     opciones,
     resultadosRonda,
@@ -31,6 +36,7 @@ export function Juego() {
 
   const [color, setColor] = useState("#000000");
   const [grosor, setGrosor] = useState(GROSORES[1]);
+  const [pestania, setPestania] = useState<"chat" | "jugadores">("chat");
 
   if (!sala) return null;
 
@@ -49,7 +55,10 @@ export function Juego() {
             esDibujante={puedeDibujar}
             color={color}
             grosor={grosor}
+            trazoVivoRemoto={trazoVivoRemoto}
             onTrazo={dibujarTrazo}
+            onTrazoVivo={(puntos) => emitirTrazoVivo(puntos, color, grosor)}
+            onTrazoVivoFin={emitirTrazoVivoFin}
           />
 
           {puedeDibujar && (
@@ -92,6 +101,13 @@ export function Juego() {
                 </button>
                 <button
                   className="btn fantasma chico"
+                  onClick={deshacerTrazo}
+                  title="Deshacer (último trazo)"
+                >
+                  ↶ Deshacer
+                </button>
+                <button
+                  className="btn fantasma chico"
                   onClick={limpiarLienzo}
                   title="Limpiar todo"
                 >
@@ -102,9 +118,25 @@ export function Juego() {
           )}
         </main>
 
-        <aside className="panel-lateral">
-          <div className="panel-invitar">
-            <BotonInvitar compacto />
+        <aside className={`panel-lateral tab-${pestania}`}>
+          <div className="panel-cabecera">
+            <div className="panel-invitar">
+              <BotonInvitar compacto />
+            </div>
+            <div className="tabs-movil">
+              <button
+                className={pestania === "jugadores" ? "activa" : ""}
+                onClick={() => setPestania("jugadores")}
+              >
+                Jugadores
+              </button>
+              <button
+                className={pestania === "chat" ? "activa" : ""}
+                onClick={() => setPestania("chat")}
+              >
+                Chat
+              </button>
+            </div>
           </div>
           <ListaJugadores />
           <Chat />
@@ -126,6 +158,8 @@ export function Juego() {
         </div>
       )}
       {sala.estado === "fin_ronda" && resultadosRonda && <ResultadosRonda />}
+
+      <Celebracion />
     </div>
   );
 }

@@ -72,6 +72,52 @@ body {
   cursor: pointer;
   box-shadow: var(--sombra);
 }
+.toast-info {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--panel-2);
+  border: 1px solid var(--borde);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  z-index: 1001;
+  box-shadow: var(--sombra);
+  animation: toastEntra 0.3s ease;
+}
+@keyframes toastEntra {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -12px);
+  }
+}
+.punto-color {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.qr-modal {
+  width: min(360px, 100%);
+}
+.qr-img {
+  width: 240px;
+  height: 240px;
+  max-width: 100%;
+  image-rendering: pixelated;
+  background: #fff;
+  border-radius: 12px;
+  padding: 8px;
+  margin: 8px 0;
+}
+.qr-enlace {
+  word-break: break-all;
+  font-size: 0.78rem;
+}
 
 /* ----------------------------------------------------------------- comunes */
 .pantalla {
@@ -249,6 +295,16 @@ body {
   width: 100%;
   accent-color: var(--rojo);
 }
+.pj-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.pj-cabecera h3 {
+  margin: 0;
+}
 .lista-lobby {
   list-style: none;
   padding: 0;
@@ -256,6 +312,33 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+/* editor de avatar */
+.editor-avatar {
+  width: min(360px, 100%);
+}
+.canvas-avatar {
+  width: 240px;
+  max-width: 80vw;
+  aspect-ratio: 1;
+  background: #fff;
+  border-radius: 14px;
+  display: block;
+  margin: 10px auto;
+  touch-action: none;
+  cursor: crosshair;
+  box-shadow: var(--sombra);
+}
+.ea-herramientas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.caja-podio .avatar,
+.caja-podio .avatar-img {
+  margin: 4px 0;
 }
 .lista-lobby li {
   display: flex;
@@ -386,6 +469,34 @@ body {
   color: var(--texto-tenue);
   font-size: 1.5rem;
 }
+.guiones-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.guiones-conteo {
+  font-size: 0.68rem;
+  color: var(--texto-tenue);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.g-letra.recien {
+  animation: revelar 0.55s ease;
+}
+@keyframes revelar {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
 .juego-cuerpo {
   flex: 1;
@@ -512,6 +623,30 @@ body {
 .panel-invitar .invitar {
   margin: 0;
 }
+.panel-cabecera {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tabs-movil {
+  display: none; /* solo en movil */
+  gap: 6px;
+}
+.tabs-movil button {
+  flex: 1;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid var(--borde);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--texto-tenue);
+  font-weight: 700;
+  cursor: pointer;
+}
+.tabs-movil button.activa {
+  background: var(--rojo);
+  color: #fff;
+  border-color: var(--rojo);
+}
 .lista-jugadores {
   background: linear-gradient(180deg, var(--panel-2), var(--panel));
   border: 1px solid var(--borde);
@@ -561,9 +696,22 @@ body {
 }
 .lista-jugadores .nombre {
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.lista-jugadores .nombre-txt {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.avatar-img {
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
 }
 .lista-jugadores .tu {
   color: var(--amarillo);
@@ -659,6 +807,7 @@ body {
   place-items: center;
   z-index: 500;
   padding: 16px;
+  animation: fadeIn 0.2s ease;
 }
 .overlay.suave {
   background: rgba(3, 12, 28, 0.5);
@@ -666,6 +815,18 @@ body {
 .overlay .tarjeta {
   width: min(560px, 100%);
   text-align: center;
+  animation: aparecer 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
 }
 .selector h2 {
   margin-top: 0;
@@ -813,8 +974,9 @@ body {
 }
 .tabla-final li {
   display: grid;
-  grid-template-columns: 30px 1fr auto;
+  grid-template-columns: 30px auto 1fr auto;
   gap: 10px;
+  align-items: center;
   padding: 8px 12px;
   background: rgba(0, 0, 0, 0.22);
   border-radius: 8px;
@@ -824,6 +986,137 @@ body {
 }
 .t-puntos {
   font-weight: 800;
+}
+
+/* ------------------------------------------------ reloj circular + mute */
+.bs-bloque.derecha {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  min-width: auto;
+}
+.btn-mute {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  font-size: 1.1rem;
+  padding: 6px 9px;
+  cursor: pointer;
+  line-height: 1;
+}
+.btn-mute:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+.reloj-circular {
+  position: relative;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+}
+.reloj-circular svg {
+  position: absolute;
+  inset: 0;
+}
+.reloj-fondo {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 6;
+}
+.reloj-progreso {
+  fill: none;
+  stroke-width: 6;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 1s linear, stroke 0.4s ease;
+}
+.reloj-num {
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.reloj-circular.urgente {
+  animation: latido 0.8s infinite;
+}
+.reloj-circular.vacio .reloj-num {
+  color: var(--texto-tenue);
+}
+
+/* ------------------------------------------------ celebracion / confeti */
+.celebracion {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 600;
+}
+.flash-verde {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(46, 204, 113, 0.35),
+    transparent 60%
+  );
+  animation: flash 0.6s ease-out forwards;
+}
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.confeti {
+  position: absolute;
+  top: -6%;
+  border-radius: 2px;
+  animation-name: caer;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+@keyframes caer {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh) rotate(540deg);
+    opacity: 0.9;
+  }
+}
+
+/* puntos flotantes en el marcador */
+.lista-jugadores li {
+  position: relative;
+}
+.flota-puntos {
+  position: absolute;
+  right: 8px;
+  top: 0;
+  font-weight: 800;
+  color: var(--verde);
+  pointer-events: none;
+  animation: flota 1.4s ease-out forwards;
+}
+@keyframes flota {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-26px);
+    opacity: 0;
+  }
 }
 
 /* ----------------------------------------------------------------- invitar */
@@ -945,22 +1238,57 @@ body {
   }
   .juego-cuerpo {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    overflow-y: auto;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
   }
   .panel-lateral {
-    grid-template-rows: auto auto;
+    grid-template-rows: auto 1fr;
+    min-height: 0;
+  }
+  /* Pestañas: en movil se muestra solo una a la vez para ganar espacio. */
+  .tabs-movil {
+    display: flex;
+  }
+  .panel-lateral.tab-chat .lista-jugadores {
+    display: none;
+  }
+  .panel-lateral.tab-jugadores .chat {
+    display: none;
   }
   .lista-jugadores {
-    max-height: 26vh;
+    max-height: none;
   }
   .chat {
-    height: 40vh;
+    height: auto;
   }
   .bs-palabra-dibujante {
     font-size: 1rem;
   }
   .g-letra {
     font-size: 1.1rem;
+  }
+
+  /* Herramientas como dock horizontal scrollable; targets táctiles grandes. */
+  .herramientas {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 12px;
+  }
+  .paleta {
+    flex-wrap: nowrap;
+  }
+  .color,
+  .color-custom {
+    width: 30px;
+    height: 30px;
+  }
+  .grosor {
+    width: 42px;
+    height: 42px;
+  }
+  .chat-entrada input,
+  .chat-entrada .btn,
+  .tabs-movil button {
+    min-height: 44px;
   }
 }

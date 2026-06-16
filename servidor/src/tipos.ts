@@ -18,6 +18,7 @@ export interface Jugador {
   esAnfitrion: boolean;
   conectado: boolean;
   espectador: boolean; // ve la sala pero no juega (entro con sala llena)
+  avatar: string | null; // PNG dataURL pequeño dibujado por el jugador
   haAcertadoEstaRonda: boolean;
   ordenAcierto: number | null;
   _puntosRondaActual?: number; // temporal, para el desglose de la ronda
@@ -31,6 +32,7 @@ export interface JugadorPublico {
   esAnfitrion: boolean;
   conectado: boolean;
   espectador: boolean;
+  avatar: string | null;
   haAcertadoEstaRonda: boolean;
   ordenAcierto: number | null;
 }
@@ -135,8 +137,12 @@ export interface EventosClienteAServidor {
     maxJugadores?: number;
   }) => void;
   iniciar_partida: (p: Record<string, never>) => void;
-  elegir_palabra: (p: { indice: 0 | 1 | 2 }) => void;
+  actualizar_avatar: (p: { avatar: string }) => void;
+  elegir_palabra: (p: { indice: number }) => void;
   dibujar_trazo: (p: { trazo: Trazo }) => void;
+  trazo_vivo: (p: { puntos: Punto[]; color: string; grosor: number }) => void;
+  trazo_vivo_fin: (p: Record<string, never>) => void;
+  deshacer_trazo: (p: Record<string, never>) => void;
   limpiar_lienzo: (p: Record<string, never>) => void;
   enviar_mensaje: (p: { texto: string }) => void;
   volver_lobby: (p: Record<string, never>) => void;
@@ -158,6 +164,8 @@ export interface EventosServidorACliente {
   }) => void;
   tu_palabra: (p: { palabra: string }) => void; // SOLO al dibujante
   trazo_nuevo: (p: { trazo: Trazo }) => void;
+  trazo_vivo: (p: { puntos: Punto[]; color: string; grosor: number }) => void;
+  trazo_vivo_fin: (p: Record<string, never>) => void;
   lienzo_limpiado: (p: Record<string, never>) => void;
   lienzo_completo: (p: { trazos: Trazo[] }) => void; // reconexion
   tiempo_actualizado: (p: { tiempoRestante: number }) => void;
@@ -169,10 +177,16 @@ export interface EventosServidorACliente {
     privado?: boolean;
   }) => void;
   casi_aciertas: (p: Record<string, never>) => void;
-  jugador_acerto: (p: { jugadorId: string; nombre: string; orden: number }) => void;
+  jugador_acerto: (p: {
+    jugadorId: string;
+    nombre: string;
+    orden: number;
+    puntos: number;
+  }) => void;
   ronda_terminada: (p: {
     palabra: string;
     categoria: string;
+    dibujanteId: string | null;
     resultados: ResultadoRonda[];
   }) => void;
   partida_terminada: (p: { podio: ResultadoRonda[] }) => void;
@@ -185,5 +199,6 @@ export interface DatosSocket {
   codigoSala?: string;
   tokenJugador?: string;
   ventanaTrazos: number[]; // timestamps de trazos recientes
+  ventanaVivo: number[]; // timestamps de trazo en vivo (preview)
   ventanaMensajes: number[]; // timestamps de mensajes recientes
 }

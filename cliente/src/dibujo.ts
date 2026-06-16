@@ -27,10 +27,22 @@ export function dibujarUnTrazo(
     return;
   }
 
+  // Suavizado: curvas cuadraticas pasando por los puntos medios entre vertices,
+  // para que el trazo se vea fluido y no "quebrado" en segmentos rectos.
+  const px = (i: number) => t.puntos[i].x * ancho;
+  const py = (i: number) => t.puntos[i].y * alto;
   ctx.beginPath();
-  ctx.moveTo(t.puntos[0].x * ancho, t.puntos[0].y * alto);
-  for (let i = 1; i < t.puntos.length; i++) {
-    ctx.lineTo(t.puntos[i].x * ancho, t.puntos[i].y * alto);
+  ctx.moveTo(px(0), py(0));
+  if (t.puntos.length === 2) {
+    ctx.lineTo(px(1), py(1));
+  } else {
+    for (let i = 1; i < t.puntos.length - 1; i++) {
+      const mx = (px(i) + px(i + 1)) / 2;
+      const my = (py(i) + py(i + 1)) / 2;
+      ctx.quadraticCurveTo(px(i), py(i), mx, my);
+    }
+    const n = t.puntos.length - 1;
+    ctx.quadraticCurveTo(px(n - 1), py(n - 1), px(n), py(n));
   }
   ctx.stroke();
 }

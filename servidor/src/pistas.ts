@@ -44,14 +44,15 @@ export function construirMascara(palabra: string): MascaraConstruida {
 
 /**
  * Calcula CUANTAS pistas dar y EN QUE segundo (de tiempoRestante) caen.
- * - total = max(1, floor(ocultas/4)), con tope min(total, floor(ocultas/2)).
+ * - total = max(1, ceil(ocultas/3)) -> ~33-40% de las letras, mas generoso para
+ *   conceptos largos; con tope min(total, floor(ocultas/2)) (nunca mas del 50%).
  * - se reparten uniformemente en la segunda mitad del reloj.
  */
 export function calcularPistasProgramadas(
   ocultas: number,
   segundos: number
 ): number[] {
-  let total = Math.max(1, Math.floor(ocultas / 4));
+  let total = Math.max(1, Math.ceil(ocultas / 3));
   total = Math.min(total, Math.floor(ocultas / 2)); // nunca mas del 50% de las ocultas
   if (total <= 0) return [];
 

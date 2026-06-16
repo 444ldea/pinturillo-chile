@@ -14,6 +14,7 @@ import {
   type ReactNode,
 } from "react";
 import { socket } from "./socket";
+import { sonidos } from "./sonido";
 import type {
   DibujoGaleria,
   Jugador,
@@ -26,6 +27,7 @@ import type {
 const K_TOKEN = "pinturillo_token";
 const K_CODIGO = "pinturillo_codigo";
 const K_NOMBRE = "pinturillo_nombre";
+const K_AVATAR = "pinturillo_avatar";
 
 function obtenerToken(): string {
   let t = localStorage.getItem(K_TOKEN);
@@ -63,10 +65,19 @@ export interface MensajeUI {
 export interface ResultadosRondaUI {
   palabra: string;
   categoria: string;
+  dibujanteId: string | null;
   resultados: ResultadoRonda[];
 }
 
 export type ErrorEntrada = "no_existe" | "llena" | null;
+
+export interface AciertoUI {
+  jugadorId: string;
+  nombre: string;
+  puntos: number;
+  esYo: boolean;
+  ts: number;
+}
 
 interface ValorJuego {
   conectado: boolean;
@@ -84,11 +95,15 @@ interface ValorJuego {
   miPalabra: string | null;
   mascara: (string | null)[] | null;
   trazos: Trazo[];
+  trazoVivoRemoto: Trazo | null;
+  ultimoAcierto: AciertoUI | null;
   mensajes: MensajeUI[];
   resultadosRonda: ResultadosRondaUI | null;
   podio: ResultadoRonda[] | null;
   galeria: DibujoGaleria[];
+  miAvatar: string | null;
   error: string | null;
+  toast: { texto: string; ts: number } | null;
   // flujo de entrada por link
   salaObjetivo: string | null;
   errorEntrada: ErrorEntrada;
@@ -104,8 +119,16 @@ interface ValorJuego {
     maxJugadores?: number;
   }) => void;
   iniciarPartida: () => void;
-  elegirPalabra: (indice: 0 | 1 | 2) => void;
+  guardarAvatar: (dataUrl: string) => void;
+  elegirPalabra: (indice: number) => void;
   dibujarTrazo: (trazo: Trazo) => void;
+  emitirTrazoVivo: (
+    puntos: { x: number; y: number }[],
+    color: string,
+    grosor: number
+  ) => void;
+  emitirTrazoVivoFin: () => void;
+  deshacerTrazo: () => void;
   limpiarLienzo: () => void;
   enviarMensaje: (texto: string) => void;
   volverLobby: () => void;
@@ -127,12 +150,18 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
   const [miPalabra, setMiPalabra] = useState<string | null>(null);
   const [mascara, setMascara] = useState<(string | null)[] | null>(null);
   const [trazos, setTrazos] = useState<Trazo[]>([]);
+  const [trazoVivoRemoto, setTrazoVivoRemoto] = useState<Trazo | null>(null);
+  const [ultimoAcierto, setUltimoAcierto] = useState<AciertoUI | null>(null);
   const [mensajes, setMensajes] = useState<MensajeUI[]>([]);
   const [resultadosRonda, setResultadosRonda] =
     useState<ResultadosRondaUI | null>(null);
   const [podio, setPodio] = useState<ResultadoRonda[] | null>(null);
   const [galeria, setGaleria] = useState<DibujoGaleria[]>([]);
+  const [miAvatar, setMiAvatar] = useState<string | null>(() =>
+    localStorage.getItem(K_AVATAR)
+  );
   const [error, setError] = useState<string | null>(null);
+  const [toast, setToast] = useState<{ texto: string; ts: number } | null>(null);
   const [tiempoRestante, setTiempoRestante] = useState(0);
   const [salaObjetivo, setSalaObjetivo] = useState<string | null>(
     parseSalaDeRuta()
@@ -141,6 +170,8 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
 
   const codigoRef = useRef<string | null>(null);
   codigoRef.current = codigo;
+  const miIdRef = useRef<string>(miId);
+  miIdRef.current = miId;
   const salaObjetivoRef = useRef<string | null>(salaObjetivo);
   salaObjetivoRef.current = salaObjetivo;
   const opcionesRef = useRef<OpcionPalabra[] | null>(null);
@@ -185,6 +216,9 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
       setErrorEntrada(null);
       localStorage.setItem(K_CODIGO, codigo);
       navegar(`/sala/${codigo}`);
+      // Ya estamos en la sala: comparte tu avatar guardado (si tienes).
+      const av = localStorage.getItem(K_AVATAR);
+      if (av) socket.emit("actualizar_avatar", { avatar: av });
     });
 
     socket.on("estado_sala", ({ sala }) => {
@@ -215,6 +249,8 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
         tipo: "sistema",
         texto: `${jugador.nombre} se unio${jugador.espectador ? " (espectador)" : ""}`,
       });
+      setToast({ texto: `${jugador.nombre} se unió 👋`, ts: Date.now() });
+      sonidos.jugadorEntra();
     });
 
     socket.on("elige_palabra", ({ opciones }) => {
@@ -234,24 +270,38 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
         setTrazos([]);
         setOpciones(null);
         setResultadosRonda(null);
+        setTrazoVivoRemoto(null);
         agregarMensaje({
           tipo: "sistema",
           texto: `Ronda nueva: dibuja ${nombreDibujante} (${categoria})`,
         });
+        sonidos.inicioRonda();
       }
     );
 
-    socket.on("tiempo_actualizado", ({ tiempoRestante }) =>
-      setTiempoRestante(tiempoRestante)
-    );
+    socket.on("tiempo_actualizado", ({ tiempoRestante }) => {
+      setTiempoRestante(tiempoRestante);
+      if (tiempoRestante > 0 && tiempoRestante <= 10) sonidos.tic();
+    });
 
     socket.on("tu_palabra", ({ palabra }) => setMiPalabra(palabra));
 
-    socket.on("trazo_nuevo", ({ trazo }) =>
-      setTrazos((prev) => [...prev, trazo])
+    socket.on("trazo_nuevo", ({ trazo }) => {
+      setTrazos((prev) => [...prev, trazo]);
+      setTrazoVivoRemoto(null);
+    });
+    socket.on("lienzo_limpiado", () => {
+      setTrazos([]);
+      setTrazoVivoRemoto(null);
+    });
+    socket.on("lienzo_completo", ({ trazos }) => {
+      setTrazos(trazos);
+      setTrazoVivoRemoto(null);
+    });
+    socket.on("trazo_vivo", ({ puntos, color, grosor }) =>
+      setTrazoVivoRemoto({ puntos, color, grosor })
     );
-    socket.on("lienzo_limpiado", () => setTrazos([]));
-    socket.on("lienzo_completo", ({ trazos }) => setTrazos(trazos));
+    socket.on("trazo_vivo_fin", () => setTrazoVivoRemoto(null));
     socket.on("pista_revelada", ({ mascara }) => setMascara(mascara));
 
     socket.on("mensaje_chat", ({ jugadorId, nombre, texto, privado }) => {
@@ -265,25 +315,35 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
 
     socket.on("casi_aciertas", () => {
       agregarMensaje({ tipo: "cerca", texto: "Estas muy cerca!" });
+      sonidos.cerca();
     });
 
-    socket.on("jugador_acerto", ({ nombre, orden }) => {
+    socket.on("jugador_acerto", ({ jugadorId, nombre, orden, puntos }) => {
       agregarMensaje({
         tipo: "acierto",
         texto: `${nombre} adivino la palabra! (#${orden})`,
       });
+      const esYo = jugadorId === miIdRef.current;
+      setUltimoAcierto({ jugadorId, nombre, puntos, esYo, ts: Date.now() });
+      if (esYo) sonidos.acertasteTu();
+      else sonidos.acierto();
     });
 
-    socket.on("ronda_terminada", ({ palabra, categoria, resultados }) => {
-      setResultadosRonda({ palabra, categoria, resultados });
-      setMiPalabra(null);
-      setOpciones(null);
-      agregarMensaje({ tipo: "sistema", texto: `La palabra era: ${palabra}` });
-    });
+    socket.on(
+      "ronda_terminada",
+      ({ palabra, categoria, dibujanteId, resultados }) => {
+        setResultadosRonda({ palabra, categoria, dibujanteId, resultados });
+        setMiPalabra(null);
+        setOpciones(null);
+        setTrazoVivoRemoto(null);
+        agregarMensaje({ tipo: "sistema", texto: `La palabra era: ${palabra}` });
+      }
+    );
 
     socket.on("partida_terminada", ({ podio }) => {
       setPodio(podio);
       setResultadosRonda(null);
+      sonidos.finPartida();
     });
 
     socket.on("galeria_partida", ({ dibujos }) => setGaleria(dibujos));
@@ -325,6 +385,8 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
       socket.off("trazo_nuevo");
       socket.off("lienzo_limpiado");
       socket.off("lienzo_completo");
+      socket.off("trazo_vivo");
+      socket.off("trazo_vivo_fin");
       socket.off("pista_revelada");
       socket.off("mensaje_chat");
       socket.off("casi_aciertas");
@@ -407,7 +469,13 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
     socket.emit("iniciar_partida", {});
   }, []);
 
-  const elegirPalabra = useCallback((indice: 0 | 1 | 2) => {
+  const guardarAvatar = useCallback((dataUrl: string) => {
+    localStorage.setItem(K_AVATAR, dataUrl);
+    setMiAvatar(dataUrl);
+    socket.emit("actualizar_avatar", { avatar: dataUrl });
+  }, []);
+
+  const elegirPalabra = useCallback((indice: number) => {
     const op = opcionesRef.current?.[indice];
     if (op) setMiPalabra(op.palabra); // feedback inmediato
     setOpciones(null);
@@ -417,6 +485,22 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
   const dibujarTrazo = useCallback((trazo: Trazo) => {
     setTrazos((prev) => [...prev, trazo]);
     socket.emit("dibujar_trazo", { trazo });
+  }, []);
+
+  const emitirTrazoVivo = useCallback(
+    (puntos: { x: number; y: number }[], color: string, grosor: number) => {
+      socket.emit("trazo_vivo", { puntos, color, grosor });
+    },
+    []
+  );
+
+  const emitirTrazoVivoFin = useCallback(() => {
+    socket.emit("trazo_vivo_fin", {});
+  }, []);
+
+  const deshacerTrazo = useCallback(() => {
+    setTrazos((prev) => prev.slice(0, -1)); // optimista
+    socket.emit("deshacer_trazo", {});
   }, []);
 
   const limpiarLienzo = useCallback(() => {
@@ -478,11 +562,15 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
     miPalabra,
     mascara,
     trazos,
+    trazoVivoRemoto,
+    ultimoAcierto,
     mensajes,
     resultadosRonda,
     podio,
     galeria,
+    miAvatar,
     error,
+    toast,
     salaObjetivo,
     errorEntrada,
     crearSala,
@@ -492,8 +580,12 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
     crearSalaNueva,
     actualizarConfig,
     iniciarPartida,
+    guardarAvatar,
     elegirPalabra,
     dibujarTrazo,
+    emitirTrazoVivo,
+    emitirTrazoVivoFin,
+    deshacerTrazo,
     limpiarLienzo,
     enviarMensaje,
     volverLobby,

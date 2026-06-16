@@ -8,13 +8,15 @@ export function SelectorPalabra() {
     <div className="overlay">
       <div className="tarjeta selector">
         <h2>Elige una palabra para dibujar</h2>
-        <p className="ayuda">Tienes 10 segundos o se elige la primera.</p>
+        <p className="ayuda">
+          Tienes 10 segundos o se elige la primera. ✏️ Dibújala, ¡no la escribas!
+        </p>
         <div className="opciones">
           {opciones.map((op, i) => (
             <button
               key={`${op.palabra}-${i}`}
               className="btn opcion"
-              onClick={() => elegirPalabra(i as 0 | 1 | 2)}
+              onClick={() => elegirPalabra(i)}
             >
               <span className="op-palabra">{op.palabra}</span>
               <span className="op-categoria">{op.categoria}</span>

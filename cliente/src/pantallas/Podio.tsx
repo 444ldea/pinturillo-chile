@@ -1,10 +1,14 @@
 import { useJuego } from "../estado";
 import { Galeria } from "../componentes/Galeria";
+import { Avatar } from "../componentes/Avatar";
 
 export function Podio() {
   const { podio, sala, soyAnfitrion, volverLobby, salirSala, miId } = useJuego();
   const tabla = podio ?? [];
   if (tabla.length === 0 && !sala) return null;
+
+  const avatarDe = (id: string) =>
+    sala?.jugadores.find((j) => j.id === id)?.avatar ?? null;
 
   const top3 = tabla.slice(0, 3);
   // Orden visual del podio: 2º, 1º, 3º
@@ -22,6 +26,12 @@ export function Podio() {
               <div className="medalla">
                 {lugar === 1 ? "🥇" : lugar === 2 ? "🥈" : "🥉"}
               </div>
+              <Avatar
+                id={r.jugadorId}
+                nombre={r.nombre}
+                avatar={avatarDe(r.jugadorId)}
+                size={54}
+              />
               <div className="p-nombre">{r.nombre}</div>
               <div className="p-puntos">{r.puntajeTotal} pts</div>
               <div className="pilar" />
@@ -36,6 +46,12 @@ export function Podio() {
           {tabla.map((r) => (
             <li key={r.jugadorId} className={r.jugadorId === miId ? "yo" : ""}>
               <span className="t-puesto">{r.orden}</span>
+              <Avatar
+                id={r.jugadorId}
+                nombre={r.nombre}
+                avatar={avatarDe(r.jugadorId)}
+                size={24}
+              />
               <span className="t-nombre">{r.nombre}</span>
               <span className="t-puntos">{r.puntajeTotal}</span>
             </li>
