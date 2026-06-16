@@ -395,33 +395,42 @@ export function manejarDesconexionDibujante(sala: Sala): void {
 }
 
 /**
- * Expulsa a un jugador (por voto de mayoria): lo banea, lo saca de la sala y
- * ajusta los indices del dibujante; si era el que dibujaba, termina/salta la ronda.
+ * Saca a un jugador de la sala (por salida voluntaria o expulsion), ajustando
+ * los indices del dibujante; si era el que dibujaba, termina/salta la ronda.
+ *  - banear: agrega su token a baneados (expulsion).
+ *  - kickSocket: notifica y saca el socket (expulsion; en salida voluntaria el
+ *    propio cliente ya se va, asi que el caller maneja el socket).
  */
-export function expulsarJugador(sala: Sala, target: Jugador): void {
+export function sacarJugador(
+  sala: Sala,
+  jugador: Jugador,
+  opts: { banear?: boolean; kickSocket?: boolean } = {}
+): void {
   const idx = sala.jugadores.findIndex(
-    (j) => j.tokenJugador === target.tokenJugador
+    (j) => j.tokenJugador === jugador.tokenJugador
   );
   if (idx === -1) return;
   const enRonda = sala.estado === "dibujando" || sala.estado === "eligiendo";
   const eraDibujante = enRonda && idx === sala.indiceDibujante;
 
-  sala.baneados.add(target.tokenJugador);
+  if (opts.banear) sala.baneados.add(jugador.tokenJugador);
   sala.jugadores.splice(idx, 1);
-  sala.votosExpulsion.delete(target.tokenJugador);
-  for (const s of sala.votosExpulsion.values()) s.delete(target.tokenJugador);
+  sala.votosExpulsion.delete(jugador.tokenJugador);
+  for (const s of sala.votosExpulsion.values()) s.delete(jugador.tokenJugador);
 
   // Ajuste de indice del dibujante para no saltar/duplicar turnos.
   if (idx < sala.indiceDibujante) sala.indiceDibujante--;
   else if (idx === sala.indiceDibujante) sala.indiceDibujante = idx - 1;
 
-  const sock = io.sockets.sockets.get(target.id);
-  if (sock) {
-    sock.emit("expulsado", {});
-    sock.leave(sala.codigo);
-    (sock.data as DatosSocket).codigoSala = undefined;
+  if (opts.kickSocket) {
+    const sock = io.sockets.sockets.get(jugador.id);
+    if (sock) {
+      sock.emit("expulsado", {});
+      sock.leave(sala.codigo);
+      (sock.data as DatosSocket).codigoSala = undefined;
+    }
   }
-  io.to(sala.codigo).emit("jugador_salio", { jugadorId: target.id });
+  io.to(sala.codigo).emit("jugador_salio", { jugadorId: jugador.id });
   asegurarAnfitrion(sala);
 
   if (eraDibujante) {
@@ -435,6 +444,11 @@ export function expulsarJugador(sala: Sala, target: Jugador): void {
     }
   }
   difundirEstado(sala);
+}
+
+/** Expulsion por voto: saca + banea + patea el socket. */
+export function expulsarJugador(sala: Sala, target: Jugador): void {
+  sacarJugador(sala, target, { banear: true, kickSocket: true });
 }
 
 /** El dibujante volvio dentro del periodo de gracia. */

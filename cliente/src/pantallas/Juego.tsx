@@ -30,6 +30,7 @@ export function Juego() {
     emitirTrazoVivoFin,
     deshacerTrazo,
     limpiarLienzo,
+    salirSala,
     opciones,
     resultadosRonda,
   } = useJuego();
@@ -122,6 +123,15 @@ export function Juego() {
           <div className="panel-cabecera">
             <div className="panel-invitar">
               <BotonInvitar compacto />
+              <button
+                className="btn fantasma chico"
+                onClick={() => {
+                  if (window.confirm("¿Salir de la partida?")) salirSala();
+                }}
+                title="Salir de la sala"
+              >
+                🚪 Salir
+              </button>
             </div>
             <div className="tabs-movil">
               <button

@@ -31,6 +31,7 @@ import {
   difundirEstado,
   elegirPalabra,
   expulsarJugador,
+  sacarJugador,
   iniciarPartida,
   inicializarJuego,
   manejarDesconexionDibujante,
@@ -175,16 +176,18 @@ function manejarSalida(
   sala.votosExpulsion.delete(jugador.tokenJugador);
   for (const s of sala.votosExpulsion.values()) s.delete(jugador.tokenJugador);
 
-  if (esVoluntaria && !enJuego) {
-    // Fuera de partida: lo quitamos del todo.
-    sala.jugadores = sala.jugadores.filter((j) => j.id !== socket.id);
+  if (esVoluntaria) {
+    // Salida voluntaria: lo quitamos limpio (incluso en partida), sin banear.
+    // El propio cliente ya se va, asi que solo soltamos el socket de la sala.
     socket.leave(codigo);
     datos(socket).codigoSala = undefined;
-  } else {
-    // En partida o desconexion: lo marcamos desconectado (permite reconexion).
-    jugador.conectado = false;
+    sacarJugador(sala, jugador); // maneja indices, ronda, anfitrion y difunde
+    programarLimpiezaSiVacia(sala);
+    return;
   }
 
+  // Desconexion involuntaria: lo marcamos desconectado (permite reconexion).
+  jugador.conectado = false;
   io.to(codigo).emit("jugador_salio", { jugadorId: socket.id });
   asegurarAnfitrion(sala);
 

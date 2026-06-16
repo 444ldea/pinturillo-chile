@@ -123,6 +123,7 @@ export function Lobby() {
                         }`}
                         onClick={() => togglePack(pk.id, pk.adulto)}
                       >
+                        <span className="chip-check">{activo ? "✓" : "○"}</span>
                         {pk.adulto ? "🔞 " : "🎨 "}
                         {pk.nombre}
                         {pk.adulto && <span className="badge-premium">Premium</span>}
@@ -130,6 +131,10 @@ export function Lobby() {
                     );
                   })}
                 </div>
+                <p className="ayuda">
+                  Se mezclan los packs activos (✓). Para jugar <strong>solo
+                  carrete</strong>, desactiva el “Chileno clásico”.
+                </p>
               </div>
             </div>
           ) : (

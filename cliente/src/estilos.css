@@ -325,6 +325,12 @@ body {
   color: #fff;
   border-color: var(--azul-3);
 }
+.chip-check {
+  font-weight: 800;
+}
+.chip-pack:not(.activo) {
+  opacity: 0.65;
+}
 .chip-pack.adulto.activo {
   background: #7b1fa2;
   border-color: #7b1fa2;
@@ -683,6 +689,9 @@ body {
 .panel-invitar {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 .panel-invitar .invitar {
   margin: 0;
