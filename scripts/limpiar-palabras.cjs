@@ -67,12 +67,8 @@ const salida = {
   palabras,
 };
 
+// Fuente unica: solo la raiz (el servidor la lee desde ../).
 fs.writeFileSync(archivo, JSON.stringify(salida, null, 2) + "\n", "utf-8");
-fs.writeFileSync(
-  path.join(raiz, "servidor", "palabras.json"),
-  JSON.stringify(salida, null, 2) + "\n",
-  "utf-8"
-);
 
 // resumen
 const cats = {};

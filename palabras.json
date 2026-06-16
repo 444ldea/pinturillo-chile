@@ -2,6 +2,7 @@
   "version": 5,
   "cantidad": 425,
   "palabras": [
+
     {
       "palabra": "Empanada",
       "categoria": "Comida",
@@ -58,7 +59,7 @@
       "multipalabra": false
     },
     {
-      "palabra": "Calzones",
+      "palabra": "Calzones Rotos",
       "categoria": "Comida",
       "multipalabra": false
     },
@@ -169,7 +170,7 @@
     },
     {
       "palabra": "Luche",
-      "categoria": "Comida",
+      "categoria": "Juegos",
       "multipalabra": false
     },
     {
@@ -333,11 +334,6 @@
       "multipalabra": false
     },
     {
-      "palabra": "Portuaria",
-      "categoria": "Lugares",
-      "multipalabra": false
-    },
-    {
       "palabra": "Cabaña",
       "categoria": "Lugares",
       "multipalabra": false
@@ -363,7 +359,7 @@
       "multipalabra": false
     },
     {
-      "palabra": "Balneario",
+      "palabra": "Playa",
       "categoria": "Lugares",
       "multipalabra": false
     },
@@ -379,11 +375,6 @@
     },
     {
       "palabra": "Parque",
-      "categoria": "Lugares",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Reserva",
       "categoria": "Lugares",
       "multipalabra": false
     },
@@ -464,11 +455,6 @@
     },
     {
       "palabra": "Lobo",
-      "categoria": "Animales",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Flamenco",
       "categoria": "Animales",
       "multipalabra": false
     },
@@ -558,17 +544,7 @@
       "multipalabra": false
     },
     {
-      "palabra": "Ballena",
-      "categoria": "Animales",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Tiburón",
-      "categoria": "Animales",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Raya",
+      "palabra": "Centolla",
       "categoria": "Animales",
       "multipalabra": false
     },
@@ -643,22 +619,12 @@
       "multipalabra": false
     },
     {
-      "palabra": "Jilguero",
-      "categoria": "Animales",
-      "multipalabra": false
-    },
-    {
       "palabra": "Chincol",
       "categoria": "Animales",
       "multipalabra": false
     },
     {
       "palabra": "Perdiz",
-      "categoria": "Animales",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Tortuga",
       "categoria": "Animales",
       "multipalabra": false
     },
@@ -753,52 +719,12 @@
       "multipalabra": false
     },
     {
-      "palabra": "Ramada",
-      "categoria": "Cultura",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Pifilka",
-      "categoria": "Cultura",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Cascahuilla",
-      "categoria": "Cultura",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Chemamull",
-      "categoria": "Cultura",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Rehue",
-      "categoria": "Cultura",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Choapino",
-      "categoria": "Cultura",
-      "multipalabra": false
-    },
-    {
       "palabra": "Tejido",
       "categoria": "Cultura",
       "multipalabra": false
     },
     {
       "palabra": "Alfarería",
-      "categoria": "Cultura",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Cestería",
-      "categoria": "Cultura",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Witral",
       "categoria": "Cultura",
       "multipalabra": false
     },
@@ -843,21 +769,6 @@
       "multipalabra": false
     },
     {
-      "palabra": "Cajón",
-      "categoria": "Cultura",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Canelo",
-      "categoria": "Cultura",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Pehuén",
-      "categoria": "Cultura",
-      "multipalabra": false
-    },
-    {
       "palabra": "Duna",
       "categoria": "Naturaleza",
       "multipalabra": false
@@ -868,22 +779,7 @@
       "multipalabra": false
     },
     {
-      "palabra": "Cañón",
-      "categoria": "Naturaleza",
-      "multipalabra": false
-    },
-    {
       "palabra": "Quebrada",
-      "categoria": "Naturaleza",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Marisma",
-      "categoria": "Naturaleza",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Turbera",
       "categoria": "Naturaleza",
       "multipalabra": false
     },
@@ -953,27 +849,7 @@
       "multipalabra": false
     },
     {
-      "palabra": "Cráter",
-      "categoria": "Naturaleza",
-      "multipalabra": false
-    },
-    {
       "palabra": "Caldera",
-      "categoria": "Naturaleza",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Fumarola",
-      "categoria": "Naturaleza",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Estalactita",
-      "categoria": "Naturaleza",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Estalagmita",
       "categoria": "Naturaleza",
       "multipalabra": false
     },
@@ -988,17 +864,7 @@
       "multipalabra": false
     },
     {
-      "palabra": "Gruta",
-      "categoria": "Naturaleza",
-      "multipalabra": false
-    },
-    {
       "palabra": "Arroyo",
-      "categoria": "Naturaleza",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Torrente",
       "categoria": "Naturaleza",
       "multipalabra": false
     },
@@ -1009,16 +875,6 @@
     },
     {
       "palabra": "Catarata",
-      "categoria": "Naturaleza",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Peñasco",
-      "categoria": "Naturaleza",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Farallón",
       "categoria": "Naturaleza",
       "multipalabra": false
     },
@@ -1043,17 +899,7 @@
       "multipalabra": false
     },
     {
-      "palabra": "Delta",
-      "categoria": "Naturaleza",
-      "multipalabra": false
-    },
-    {
       "palabra": "Planicie",
-      "categoria": "Naturaleza",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Meseta",
       "categoria": "Naturaleza",
       "multipalabra": false
     },
@@ -1083,18 +929,8 @@
       "multipalabra": false
     },
     {
-      "palabra": "Metawe",
-      "categoria": "Objetos",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Tiesto",
-      "categoria": "Objetos",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Cántaro",
-      "categoria": "Objetos",
+      "palabra": "Sauce",
+      "categoria": "Naturaleza",
       "multipalabra": false
     },
     {
@@ -1109,16 +945,6 @@
     },
     {
       "palabra": "Bombilla",
-      "categoria": "Objetos",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Molinillo",
-      "categoria": "Objetos",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Comal",
       "categoria": "Objetos",
       "multipalabra": false
     },
@@ -1178,11 +1004,6 @@
       "multipalabra": false
     },
     {
-      "palabra": "Carcaj",
-      "categoria": "Objetos",
-      "multipalabra": false
-    },
-    {
       "palabra": "Flecha",
       "categoria": "Objetos",
       "multipalabra": false
@@ -1193,27 +1014,12 @@
       "multipalabra": false
     },
     {
-      "palabra": "Maza",
-      "categoria": "Objetos",
-      "multipalabra": false
-    },
-    {
       "palabra": "Escudo",
       "categoria": "Objetos",
       "multipalabra": false
     },
     {
       "palabra": "Telar",
-      "categoria": "Objetos",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Huso",
-      "categoria": "Objetos",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Rueca",
       "categoria": "Objetos",
       "multipalabra": false
     },
@@ -1239,11 +1045,6 @@
     },
     {
       "palabra": "Cesto",
-      "categoria": "Objetos",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Topo",
       "categoria": "Objetos",
       "multipalabra": false
     },
@@ -1328,11 +1129,6 @@
       "multipalabra": false
     },
     {
-      "palabra": "Palín",
-      "categoria": "Deportes",
-      "multipalabra": false
-    },
-    {
       "palabra": "Rayuela",
       "categoria": "Deportes",
       "multipalabra": false
@@ -1363,37 +1159,12 @@
       "multipalabra": false
     },
     {
-      "palabra": "Hockey",
-      "categoria": "Deportes",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Polo",
-      "categoria": "Deportes",
-      "multipalabra": false
-    },
-    {
       "palabra": "Equitación",
       "categoria": "Deportes",
       "multipalabra": false
     },
     {
       "palabra": "Esgrima",
-      "categoria": "Deportes",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Judo",
-      "categoria": "Deportes",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Karate",
-      "categoria": "Deportes",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Taekwondo",
       "categoria": "Deportes",
       "multipalabra": false
     },
@@ -1438,16 +1209,6 @@
       "multipalabra": false
     },
     {
-      "palabra": "Kitesurf",
-      "categoria": "Deportes",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Piragüismo",
-      "categoria": "Deportes",
-      "multipalabra": false
-    },
-    {
       "palabra": "Snowboard",
       "categoria": "Deportes",
       "multipalabra": false
@@ -1459,11 +1220,6 @@
     },
     {
       "palabra": "Gimnasia",
-      "categoria": "Deportes",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Lucha",
       "categoria": "Deportes",
       "multipalabra": false
     },
@@ -1488,33 +1244,13 @@
       "multipalabra": false
     },
     {
-      "palabra": "Salto",
-      "categoria": "Deportes",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Ciclomontaña",
-      "categoria": "Deportes",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Bandera",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
       "palabra": "Moneda",
       "categoria": "Historia",
       "multipalabra": false
     },
     {
-      "palabra": "Quipu",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
       "palabra": "Canoa",
-      "categoria": "Historia",
+      "categoria": "Objeto",
       "multipalabra": false
     },
     {
@@ -1524,11 +1260,6 @@
     },
     {
       "palabra": "Galeón",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Bergantín",
       "categoria": "Historia",
       "multipalabra": false
     },
@@ -1558,11 +1289,6 @@
       "multipalabra": false
     },
     {
-      "palabra": "Submarino",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
       "palabra": "Bayoneta",
       "categoria": "Historia",
       "multipalabra": false
@@ -1583,77 +1309,7 @@
       "multipalabra": false
     },
     {
-      "palabra": "Daguerrotipo",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
       "palabra": "Fonógrafo",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Radio",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Teléfono",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Linterna",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Tambo",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Unku",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Acllahuasi",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Pukará",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Chullpa",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Huara",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Diligencia",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Galera",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Biplano",
-      "categoria": "Historia",
-      "multipalabra": false
-    },
-    {
-      "palabra": "Obús",
       "categoria": "Historia",
       "multipalabra": false
     },
@@ -1708,7 +1364,7 @@
       "multipalabra": true
     },
     {
-      "palabra": "Sky Costanera",
+      "palabra": "Costanera Center",
       "categoria": "Monumentos",
       "multipalabra": true
     },
@@ -1783,7 +1439,7 @@
       "multipalabra": true
     },
     {
-      "palabra": "Isla de Pascua (Rapa Nui)",
+      "palabra": "Rapa Nui",
       "categoria": "Destinos",
       "multipalabra": true
     },
@@ -1823,11 +1479,6 @@
       "multipalabra": true
     },
     {
-      "palabra": "San Alfonso del Mar",
-      "categoria": "Destinos",
-      "multipalabra": true
-    },
-    {
       "palabra": "Cerro San Cristóbal",
       "categoria": "Cerros y parques",
       "multipalabra": true
@@ -1838,42 +1489,12 @@
       "multipalabra": true
     },
     {
-      "palabra": "Parque Metropolitano",
-      "categoria": "Cerros y parques",
-      "multipalabra": true
-    },
-    {
       "palabra": "Cerro Alegre",
       "categoria": "Cerros y parques",
       "multipalabra": true
     },
     {
       "palabra": "Cerro Concepción",
-      "categoria": "Cerros y parques",
-      "multipalabra": true
-    },
-    {
-      "palabra": "Quinta Normal",
-      "categoria": "Cerros y parques",
-      "multipalabra": true
-    },
-    {
-      "palabra": "Parque Bicentenario",
-      "categoria": "Cerros y parques",
-      "multipalabra": true
-    },
-    {
-      "palabra": "Cerro Conun Huenu",
-      "categoria": "Cerros y parques",
-      "multipalabra": true
-    },
-    {
-      "palabra": "Cerro Ñielol",
-      "categoria": "Cerros y parques",
-      "multipalabra": true
-    },
-    {
-      "palabra": "Parque de las Esculturas",
       "categoria": "Cerros y parques",
       "multipalabra": true
     },
@@ -1938,11 +1559,6 @@
       "multipalabra": true
     },
     {
-      "palabra": "La Rubia de Kennedy",
-      "categoria": "Leyendas urbanas",
-      "multipalabra": true
-    },
-    {
       "palabra": "El Mandinga",
       "categoria": "Leyendas urbanas",
       "multipalabra": true
@@ -1969,163 +1585,164 @@
     },
     {
       "palabra": "Colo-Colo",
-      "categoria": "Fútbol Primera A",
+      "categoria": "Equipo Futbol",
       "multipalabra": false
     },
     {
       "palabra": "Universidad de Chile",
-      "categoria": "Fútbol Primera A",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Universidad Católica",
-      "categoria": "Fútbol Primera A",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Unión Española",
-      "categoria": "Fútbol Primera A",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Audax Italiano",
-      "categoria": "Fútbol Primera A",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Palestino",
-      "categoria": "Fútbol Primera A",
+      "categoria": "Equipo Futbol",
       "multipalabra": false
     },
     {
       "palabra": "O'Higgins",
-      "categoria": "Fútbol Primera A",
+      "categoria": "Equipo Futbol",
       "multipalabra": false
     },
     {
       "palabra": "Everton",
-      "categoria": "Fútbol Primera A",
+      "categoria": "Equipo Futbol",
       "multipalabra": false
     },
     {
       "palabra": "Huachipato",
-      "categoria": "Fútbol Primera A",
+      "categoria": "Equipo Futbol",
       "multipalabra": false
     },
     {
       "palabra": "Coquimbo Unido",
-      "categoria": "Fútbol Primera A",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Deportes Iquique",
-      "categoria": "Fútbol Primera A",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Ñublense",
-      "categoria": "Fútbol Primera A",
+      "categoria": "Equipo Futbol",
       "multipalabra": false
     },
     {
       "palabra": "Unión La Calera",
-      "categoria": "Fútbol Primera A",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Cobresal",
-      "categoria": "Fútbol Primera A",
+      "categoria": "Equipo Futbol",
       "multipalabra": false
     },
     {
       "palabra": "Deportes La Serena",
-      "categoria": "Fútbol Primera A",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Deportes Limache",
-      "categoria": "Fútbol Primera A",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Santiago Wanderers",
-      "categoria": "Fútbol Primera B",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Magallanes",
-      "categoria": "Fútbol Primera B",
+      "categoria": "Equipo Futbol",
       "multipalabra": false
     },
     {
       "palabra": "Cobreloa",
-      "categoria": "Fútbol Primera B",
+      "categoria": "Equipo Futbol",
       "multipalabra": false
     },
     {
       "palabra": "Deportes Copiapó",
-      "categoria": "Fútbol Primera B",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Deportes Temuco",
-      "categoria": "Fútbol Primera B",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Rangers de Talca",
-      "categoria": "Fútbol Primera B",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "San Marcos de Arica",
-      "categoria": "Fútbol Primera B",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Universidad de Concepción",
-      "categoria": "Fútbol Primera B",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Unión San Felipe",
-      "categoria": "Fútbol Primera B",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Curicó Unido",
-      "categoria": "Fútbol Primera B",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "San Luis de Quillota",
-      "categoria": "Fútbol Primera B",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Deportes Antofagasta",
-      "categoria": "Fútbol Primera B",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Deportes Recoleta",
-      "categoria": "Fútbol Primera B",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Deportes Santa Cruz",
-      "categoria": "Fútbol Primera B",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     },
     {
       "palabra": "Barnechea",
-      "categoria": "Fútbol Primera B",
+      "categoria": "Equipo Futbol",
       "multipalabra": false
     },
     {
       "palabra": "Deportes Concepción",
-      "categoria": "Fútbol Primera B",
+      "categoria": "Equipo Futbol",
       "multipalabra": true
     }
   ]
 }
+
