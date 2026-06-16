@@ -177,6 +177,7 @@ export function crearSala(
     galeria: [],
     votosExpulsion: new Map<string, Set<string>>(),
     baneados: new Set<string>(),
+    dibujosCompletados: 0,
     palabrasUsadas: new Set<string>(),
     timerEleccion: null,
     timerFinRonda: null,

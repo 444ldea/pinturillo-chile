@@ -95,6 +95,7 @@ export function iniciarPartida(sala: Sala): void {
   sala.palabrasUsadas.clear();
   sala.trazos = [];
   sala.galeria = [];
+  sala.dibujosCompletados = 0;
   sala.jugadores.forEach((j) => {
     j.puntaje = 0;
     j.haAcertadoEstaRonda = false;
@@ -281,6 +282,7 @@ export function terminarRonda(sala: Sala, dibujanteAbandono = false): void {
   if (sala.estado !== "dibujando") return;
   limpiarTimersRonda(sala);
   sala.estado = "fin_ronda";
+  sala.dibujosCompletados += 1;
 
   const dibujante = dibujanteActual(sala);
   if (dibujante && !dibujanteAbandono) {
@@ -320,6 +322,14 @@ export function terminarRonda(sala: Sala, dibujanteAbandono = false): void {
     resultados,
   });
   difundirEstado(sala);
+
+  // Modo carrete: cada 3 dibujos, ¡salud! 🍻
+  if (
+    sala.config.packs.includes("carrete") &&
+    sala.dibujosCompletados % 3 === 0
+  ) {
+    io.to(sala.codigo).emit("salud", {});
+  }
 
   sala.timerFinRonda = setTimeout(() => avanzarRonda(sala), MS_ENTRE_RONDAS);
 }
@@ -362,6 +372,7 @@ export function volverLobby(sala: Sala): void {
   sala.pistasProgramadas = [];
   sala.trazos = [];
   sala.galeria = [];
+  sala.dibujosCompletados = 0;
   sala.tiempoRestante = 0;
   sala.palabrasUsadas.clear();
   sala.jugadores.forEach((j) => {

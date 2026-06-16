@@ -74,34 +74,27 @@ export function validar(intento: string, secreta: string): Resultado {
   const esFrase = palSecreta.length > 1;
 
   if (!esFrase) {
-    // Palabra unica: tolera errores de tipeo
+    // ESTRICTO: solo cuenta el match exacto (ni === ns, ya resuelto arriba).
+    // Un casi-acierto (typo cercano) se marca "cerca" para el aviso, pero NO
+    // se da por bueno: el error de tipeo queda como intento fallido (y a la
+    // vista en el chat).
     const dist = levenshtein(ni, ns);
-    const u = umbralPorLargo(ns);
-    if (dist <= u) return { acierto: true, cerca: false };
-    if (dist <= u + 1) return { acierto: false, cerca: true };
+    if (dist <= umbralPorLargo(ns)) return { acierto: false, cerca: true };
     return { acierto: false, cerca: false };
   }
 
-  // FRASE: el adivinador ve los guiones, asi que exigimos todas las palabras
-  // CON CONTENIDO (ignoramos las preposiciones, que ya estan pre-rellenadas).
+  // FRASE: exigimos todas las palabras CON CONTENIDO escritas EXACTAS
+  // (ignoramos las preposiciones, que ya estan pre-rellenadas). Sin tolerancia
+  // a typos: una palabra mal escrita no cuenta.
   const significativas = palSecreta.filter((w) => !PALABRAS_VACIAS.has(w));
-  const palIntento = ni.split(" ");
+  const palIntento = new Set(ni.split(" "));
 
   let aciertos = 0;
   for (const cs of significativas) {
-    for (const ci of palIntento) {
-      if (levenshtein(ci, cs) <= umbralPorLargo(cs)) {
-        aciertos++;
-        break;
-      }
-    }
+    if (palIntento.has(cs)) aciertos++;
   }
 
   if (aciertos === significativas.length) return { acierto: true, cerca: false };
-  // Nota: la spec (6.3) usaba ceil(n*0.6), pero eso impide marcar "cerca" en
-  // frases de 2 palabras (1 de 2 = 50% < 60%), contradiciendo los ejemplos de
-  // 6.4 ("torres" -> cerca). Honramos 6.4: acertar alguna palabra de contenido
-  // (pero no todas) cuenta como "cerca".
-  if (aciertos > 0) return { acierto: false, cerca: true };
+  if (aciertos > 0) return { acierto: false, cerca: true }; // alguna acertada
   return { acierto: false, cerca: false };
 }

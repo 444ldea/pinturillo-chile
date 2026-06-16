@@ -100,4 +100,12 @@ export const sonidos = {
       { f: 587, t: 0, d: 0.08, vol: 0.1 },
       { f: 784, t: 0.07, d: 0.1, vol: 0.1 },
     ]),
+  // ¡Salud! brindis festivo
+  salud: () =>
+    tocar([
+      { f: 659, t: 0, d: 0.14, tipo: "triangle" },
+      { f: 880, t: 0.12, d: 0.14, tipo: "triangle" },
+      { f: 1047, t: 0.24, d: 0.28, tipo: "triangle" },
+      { f: 1319, t: 0.42, d: 0.32, tipo: "triangle" },
+    ]),
 };

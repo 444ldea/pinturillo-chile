@@ -150,6 +150,7 @@ export interface EventosServidorACliente {
   }) => void;
   partida_terminada: (p: { podio: ResultadoRonda[] }) => void;
   galeria_partida: (p: { dibujos: DibujoGaleria[] }) => void;
+  salud: (p: Record<string, never>) => void;
   expulsado: (p: Record<string, never>) => void;
   error_juego: (p: { codigo: string; mensaje: string }) => void;
 }

@@ -101,6 +101,7 @@ interface ValorJuego {
   resultadosRonda: ResultadosRondaUI | null;
   podio: ResultadoRonda[] | null;
   galeria: DibujoGaleria[];
+  saludTs: number | null;
   miAvatar: string | null;
   error: string | null;
   toast: { texto: string; ts: number } | null;
@@ -159,6 +160,7 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
     useState<ResultadosRondaUI | null>(null);
   const [podio, setPodio] = useState<ResultadoRonda[] | null>(null);
   const [galeria, setGaleria] = useState<DibujoGaleria[]>([]);
+  const [saludTs, setSaludTs] = useState<number | null>(null);
   const [miAvatar, setMiAvatar] = useState<string | null>(() =>
     localStorage.getItem(K_AVATAR)
   );
@@ -350,6 +352,11 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
 
     socket.on("galeria_partida", ({ dibujos }) => setGaleria(dibujos));
 
+    socket.on("salud", () => {
+      setSaludTs(Date.now());
+      sonidos.salud();
+    });
+
     socket.on("expulsado", () => {
       localStorage.removeItem(K_CODIGO);
       navegar("/");
@@ -419,6 +426,7 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
       socket.off("ronda_terminada");
       socket.off("partida_terminada");
       socket.off("galeria_partida");
+      socket.off("salud");
       socket.off("expulsado");
       socket.off("error_juego");
     };
@@ -599,6 +607,7 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
     resultadosRonda,
     podio,
     galeria,
+    saludTs,
     miAvatar,
     error,
     toast,

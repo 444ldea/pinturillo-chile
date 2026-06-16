@@ -87,6 +87,7 @@ export interface Sala {
   // Voto de expulsion: token del objetivo -> set de tokens que votaron.
   votosExpulsion: Map<string, Set<string>>;
   baneados: Set<string>; // tokens expulsados (no pueden volver a la sala)
+  dibujosCompletados: number; // rondas terminadas en la partida (para el "salud")
   tiempoRestante: number;
   timerId: NodeJS.Timeout | null; // reloj de la ronda
 
@@ -200,6 +201,7 @@ export interface EventosServidorACliente {
   }) => void;
   partida_terminada: (p: { podio: ResultadoRonda[] }) => void;
   galeria_partida: (p: { dibujos: DibujoGaleria[] }) => void;
+  salud: (p: Record<string, never>) => void; // ¡salud! cada 3 dibujos (carrete)
   expulsado: (p: Record<string, never>) => void; // a quien fue expulsado
   error_juego: (p: { codigo: string; mensaje: string }) => void;
 }

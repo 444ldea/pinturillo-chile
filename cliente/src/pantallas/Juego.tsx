@@ -7,6 +7,7 @@ import { Chat } from "../componentes/Chat";
 import { SelectorPalabra } from "../componentes/SelectorPalabra";
 import { BotonInvitar } from "../componentes/BotonInvitar";
 import { Celebracion } from "../componentes/Celebracion";
+import { Salud } from "../componentes/Salud";
 import { ResultadosRonda } from "./ResultadosRonda";
 
 const PALETA = [
@@ -170,6 +171,7 @@ export function Juego() {
       {sala.estado === "fin_ronda" && resultadosRonda && <ResultadosRonda />}
 
       <Celebracion />
+      <Salud />
     </div>
   );
 }
