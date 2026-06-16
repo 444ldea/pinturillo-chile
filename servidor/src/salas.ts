@@ -10,6 +10,7 @@ import {
   Sala,
   SalaPublica,
 } from "./tipos";
+import { catalogoPacks } from "./palabras";
 
 export const salas = new Map<string, Sala>();
 
@@ -17,6 +18,7 @@ const CONFIG_POR_DEFECTO: ConfigSala = {
   totalVueltas: 3,
   segundosPorRonda: 80,
   maxJugadores: 8,
+  packs: ["clasico"],
 };
 
 // Prefijos con sabor chileno para los codigos de sala.
@@ -120,6 +122,7 @@ export function vistaPublica(sala: Sala): SalaPublica {
     tiempoRestante: sala.tiempoRestante,
     votosExpulsion,
     umbralExpulsion,
+    packsDisponibles: catalogoPacks(),
   };
 }
 
@@ -158,7 +161,7 @@ export function crearSala(
     estado: "lobby",
     jugadores: [jugador],
     anfitrionId: socketId,
-    config: { ...CONFIG_POR_DEFECTO },
+    config: { ...CONFIG_POR_DEFECTO, packs: [...CONFIG_POR_DEFECTO.packs] },
     vueltaActual: 0,
     indiceDibujante: 0,
     palabraSecreta: null,

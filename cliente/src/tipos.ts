@@ -43,6 +43,7 @@ export interface ConfigSala {
   totalVueltas: number;
   segundosPorRonda: number;
   maxJugadores: number;
+  packs: string[];
 }
 
 export interface SalaPublica {
@@ -58,6 +59,7 @@ export interface SalaPublica {
   tiempoRestante: number;
   votosExpulsion: Record<string, number>;
   umbralExpulsion: number;
+  packsDisponibles: { id: string; nombre: string; adulto: boolean }[];
 }
 
 export interface ResultadoRonda {
@@ -90,6 +92,7 @@ export interface EventosClienteAServidor {
     totalVueltas?: number;
     segundosPorRonda?: number;
     maxJugadores?: number;
+    packs?: string[];
   }) => void;
   iniciar_partida: (p: Record<string, never>) => void;
   actualizar_avatar: (p: { avatar: string }) => void;

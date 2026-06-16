@@ -19,6 +19,26 @@ export function Lobby() {
   const cfg = sala.config;
   const conectados = sala.jugadores.filter((j) => j.conectado).length;
 
+  function togglePack(id: string, adulto: boolean) {
+    if (!sala) return;
+    const activos = new Set(sala.config.packs);
+    if (activos.has(id)) {
+      if (activos.size === 1) return; // siempre al menos 1 pack
+      activos.delete(id);
+    } else {
+      if (
+        adulto &&
+        !window.confirm(
+          'El pack "Carrete +18" tiene contenido para mayores de edad. ' +
+            "¿Confirmas que todos en la sala son mayores de 18?"
+        )
+      )
+        return;
+      activos.add(id);
+    }
+    actualizarConfig({ packs: Array.from(activos) });
+  }
+
   function copiar() {
     navigator.clipboard?.writeText(sala!.codigo).then(
       () => {
@@ -89,11 +109,40 @@ export function Lobby() {
                   }
                 />
               </label>
+
+              <div className="packs">
+                <span className="packs-titulo">Packs de palabras</span>
+                <div className="packs-chips">
+                  {sala.packsDisponibles.map((pk) => {
+                    const activo = cfg.packs.includes(pk.id);
+                    return (
+                      <button
+                        key={pk.id}
+                        className={`chip-pack ${activo ? "activo" : ""} ${
+                          pk.adulto ? "adulto" : ""
+                        }`}
+                        onClick={() => togglePack(pk.id, pk.adulto)}
+                      >
+                        {pk.adulto ? "🔞 " : "🎨 "}
+                        {pk.nombre}
+                        {pk.adulto && <span className="badge-premium">Premium</span>}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           ) : (
             <div className="config-readonly">
               <h3>Configuración</h3>
               <p>{cfg.totalVueltas} vueltas · {cfg.segundosPorRonda}s · hasta {cfg.maxJugadores} jugadores</p>
+              <p className="ayuda">
+                Packs:{" "}
+                {sala.packsDisponibles
+                  .filter((pk) => cfg.packs.includes(pk.id))
+                  .map((pk) => pk.nombre)
+                  .join(", ")}
+              </p>
               <p className="ayuda">Esperando al anfitrión…</p>
             </div>
           )}

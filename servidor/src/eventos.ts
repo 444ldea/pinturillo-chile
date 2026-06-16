@@ -39,6 +39,7 @@ import {
   volverLobby,
 } from "./juego";
 import { validar } from "./validacion";
+import { packsValidos } from "./palabras";
 
 type IO = Server<EventosClienteAServidor, EventosServidorACliente>;
 type SocketJuego = Socket<EventosClienteAServidor, EventosServidorACliente>;
@@ -275,6 +276,8 @@ export function registrarEventos(io: IO): void {
         sala.config.segundosPorRonda = clamp(Math.round(p.segundosPorRonda), 30, 180);
       if (typeof p?.maxJugadores === "number")
         sala.config.maxJugadores = clamp(Math.round(p.maxJugadores), 2, 12);
+      if (Array.isArray(p?.packs))
+        sala.config.packs = packsValidos(p.packs);
       difundirEstado(sala);
     });
 

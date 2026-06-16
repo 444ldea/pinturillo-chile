@@ -130,7 +130,11 @@ function comenzarEleccion(sala: Sala): void {
   sala.palabraSecreta = null;
   sala.mascara = [];
   sala.trazos = [];
-  sala.opcionesPalabras = elegirOpciones(sala.palabrasUsadas, OPCIONES_POR_RONDA);
+  sala.opcionesPalabras = elegirOpciones(
+    sala.palabrasUsadas,
+    OPCIONES_POR_RONDA,
+    sala.config.packs
+  );
 
   const dibujante = dibujanteActual(sala);
   if (!dibujante) {

@@ -1,6 +1,7 @@
 import { useJuego } from "../estado";
 import { Galeria } from "../componentes/Galeria";
 import { Avatar } from "../componentes/Avatar";
+import { DONACION_URL, HAY_DONACION } from "../config";
 
 export function Podio() {
   const { podio, sala, soyAnfitrion, volverLobby, salirSala, miId } = useJuego();
@@ -73,6 +74,17 @@ export function Podio() {
           Salir
         </button>
       </div>
+
+      {HAY_DONACION && (
+        <a
+          className="btn donar"
+          href={DONACION_URL}
+          target="_blank"
+          rel="noreferrer"
+        >
+          ❤️ ¿Te gustó? Invítanos un café
+        </a>
+      )}
     </div>
   );
 }

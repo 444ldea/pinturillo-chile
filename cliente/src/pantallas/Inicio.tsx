@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useJuego } from "../estado";
+import { DONACION_URL, HAY_DONACION } from "../config";
 
 export function Inicio() {
   const { crearSala, unirseSala } = useJuego();
@@ -83,6 +84,19 @@ export function Inicio() {
 
       <footer className="pie">
         Hecho a la chilena · juego en tiempo real · sin registro
+        {HAY_DONACION && (
+          <>
+            {" · "}
+            <a
+              className="link-donar"
+              href={DONACION_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              ❤️ Apóyanos
+            </a>
+          </>
+        )}
       </footer>
     </div>
   );

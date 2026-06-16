@@ -59,6 +59,7 @@ export interface ConfigSala {
   totalVueltas: number; // por defecto 3 (cada jugador dibuja 3 veces)
   segundosPorRonda: number; // por defecto 80
   maxJugadores: number; // por defecto 8
+  packs: string[]; // packs de palabras activos (por defecto ["clasico"])
 }
 
 export interface Sala {
@@ -112,6 +113,7 @@ export interface SalaPublica {
   tiempoRestante: number;
   votosExpulsion: Record<string, number>; // jugadorId -> votos en su contra
   umbralExpulsion: number; // votos necesarios para expulsar (0 = deshabilitado)
+  packsDisponibles: { id: string; nombre: string; adulto: boolean }[];
   // NUNCA incluye palabraSecreta ni opcionesPalabras
 }
 
@@ -140,6 +142,7 @@ export interface EventosClienteAServidor {
     totalVueltas?: number;
     segundosPorRonda?: number;
     maxJugadores?: number;
+    packs?: string[];
   }) => void;
   iniciar_partida: (p: Record<string, never>) => void;
   actualizar_avatar: (p: { avatar: string }) => void;

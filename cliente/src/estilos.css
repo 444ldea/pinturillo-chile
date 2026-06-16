@@ -295,6 +295,70 @@ body {
   width: 100%;
   accent-color: var(--rojo);
 }
+.packs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.packs-titulo {
+  font-size: 0.95rem;
+}
+.packs-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip-pack {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--borde);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--texto-tenue);
+  font-weight: 700;
+  cursor: pointer;
+}
+.chip-pack.activo {
+  background: var(--azul-3);
+  color: #fff;
+  border-color: var(--azul-3);
+}
+.chip-pack.adulto.activo {
+  background: #7b1fa2;
+  border-color: #7b1fa2;
+}
+.badge-premium {
+  font-size: 0.62rem;
+  font-weight: 800;
+  background: var(--amarillo);
+  color: #2a2a00;
+  padding: 1px 6px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+.link-donar {
+  color: var(--rojo);
+  font-weight: 700;
+  text-decoration: none;
+}
+.link-donar:hover {
+  text-decoration: underline;
+}
+.btn.donar {
+  display: inline-block;
+  margin: 10px auto 0;
+  background: #ff5e5b;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-weight: 700;
+}
+.btn.donar:hover {
+  filter: brightness(1.08);
+}
 .pj-cabecera {
   display: flex;
   align-items: center;

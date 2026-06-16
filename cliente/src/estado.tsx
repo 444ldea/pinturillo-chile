@@ -117,6 +117,7 @@ interface ValorJuego {
     totalVueltas?: number;
     segundosPorRonda?: number;
     maxJugadores?: number;
+    packs?: string[];
   }) => void;
   iniciarPartida: () => void;
   guardarAvatar: (dataUrl: string) => void;
@@ -484,6 +485,7 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
       totalVueltas?: number;
       segundosPorRonda?: number;
       maxJugadores?: number;
+      packs?: string[];
     }) => socket.emit("actualizar_config", cfg),
     []
   );
