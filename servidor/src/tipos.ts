@@ -83,6 +83,9 @@ export interface Sala {
 
   trazos: Trazo[];
   galeria: DibujoGaleria[]; // dibujos de las rondas jugadas (Feature 3)
+  // Voto de expulsion: token del objetivo -> set de tokens que votaron.
+  votosExpulsion: Map<string, Set<string>>;
+  baneados: Set<string>; // tokens expulsados (no pueden volver a la sala)
   tiempoRestante: number;
   timerId: NodeJS.Timeout | null; // reloj de la ronda
 
@@ -107,6 +110,8 @@ export interface SalaPublica {
   categoriaActual: string | null;
   mascara: (string | null)[] | null; // letras visibles, null = oculto, " " = espacio
   tiempoRestante: number;
+  votosExpulsion: Record<string, number>; // jugadorId -> votos en su contra
+  umbralExpulsion: number; // votos necesarios para expulsar (0 = deshabilitado)
   // NUNCA incluye palabraSecreta ni opcionesPalabras
 }
 
@@ -145,6 +150,7 @@ export interface EventosClienteAServidor {
   deshacer_trazo: (p: Record<string, never>) => void;
   limpiar_lienzo: (p: Record<string, never>) => void;
   enviar_mensaje: (p: { texto: string }) => void;
+  votar_expulsion: (p: { objetivoId: string }) => void;
   volver_lobby: (p: Record<string, never>) => void;
   salir_sala: (p: Record<string, never>) => void;
 }
@@ -191,6 +197,7 @@ export interface EventosServidorACliente {
   }) => void;
   partida_terminada: (p: { podio: ResultadoRonda[] }) => void;
   galeria_partida: (p: { dibujos: DibujoGaleria[] }) => void;
+  expulsado: (p: Record<string, never>) => void; // a quien fue expulsado
   error_juego: (p: { codigo: string; mensaje: string }) => void;
 }
 

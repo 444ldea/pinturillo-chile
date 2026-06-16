@@ -726,6 +726,30 @@ body {
   color: var(--verde);
   font-weight: 800;
 }
+.btn-expulsar {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.35;
+  font-size: 0.85rem;
+  padding: 0 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  border-radius: 6px;
+}
+.btn-expulsar:hover {
+  opacity: 1;
+}
+.btn-expulsar.votado {
+  opacity: 1;
+  background: rgba(213, 43, 30, 0.25);
+}
+.voto-conteo {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--rojo);
+}
 .lista-jugadores .puntos {
   font-weight: 800;
   font-variant-numeric: tabular-nums;

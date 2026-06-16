@@ -7,12 +7,14 @@
 
 import { Server } from "socket.io";
 import {
+  DatosSocket,
   EventosClienteAServidor,
   EventosServidorACliente,
+  Jugador,
   ResultadoRonda,
   Sala,
 } from "./tipos";
-import { jugadoresReales, vistaPublica } from "./salas";
+import { asegurarAnfitrion, jugadoresReales, vistaPublica } from "./salas";
 import { elegirOpciones } from "./palabras";
 import {
   calcularPistasProgramadas,
@@ -386,6 +388,49 @@ export function manejarDesconexionDibujante(sala: Sala): void {
       }
     }, MS_GRACIA_DIBUJANTE);
   }
+}
+
+/**
+ * Expulsa a un jugador (por voto de mayoria): lo banea, lo saca de la sala y
+ * ajusta los indices del dibujante; si era el que dibujaba, termina/salta la ronda.
+ */
+export function expulsarJugador(sala: Sala, target: Jugador): void {
+  const idx = sala.jugadores.findIndex(
+    (j) => j.tokenJugador === target.tokenJugador
+  );
+  if (idx === -1) return;
+  const enRonda = sala.estado === "dibujando" || sala.estado === "eligiendo";
+  const eraDibujante = enRonda && idx === sala.indiceDibujante;
+
+  sala.baneados.add(target.tokenJugador);
+  sala.jugadores.splice(idx, 1);
+  sala.votosExpulsion.delete(target.tokenJugador);
+  for (const s of sala.votosExpulsion.values()) s.delete(target.tokenJugador);
+
+  // Ajuste de indice del dibujante para no saltar/duplicar turnos.
+  if (idx < sala.indiceDibujante) sala.indiceDibujante--;
+  else if (idx === sala.indiceDibujante) sala.indiceDibujante = idx - 1;
+
+  const sock = io.sockets.sockets.get(target.id);
+  if (sock) {
+    sock.emit("expulsado", {});
+    sock.leave(sala.codigo);
+    (sock.data as DatosSocket).codigoSala = undefined;
+  }
+  io.to(sala.codigo).emit("jugador_salio", { jugadorId: target.id });
+  asegurarAnfitrion(sala);
+
+  if (eraDibujante) {
+    if (sala.estado === "eligiendo") {
+      avanzarRonda(sala);
+      return;
+    }
+    if (sala.estado === "dibujando") {
+      terminarRonda(sala, true);
+      return;
+    }
+  }
+  difundirEstado(sala);
 }
 
 /** El dibujante volvio dentro del periodo de gracia. */

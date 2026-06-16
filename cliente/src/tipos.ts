@@ -56,6 +56,8 @@ export interface SalaPublica {
   categoriaActual: string | null;
   mascara: (string | null)[] | null;
   tiempoRestante: number;
+  votosExpulsion: Record<string, number>;
+  umbralExpulsion: number;
 }
 
 export interface ResultadoRonda {
@@ -98,6 +100,7 @@ export interface EventosClienteAServidor {
   deshacer_trazo: (p: Record<string, never>) => void;
   limpiar_lienzo: (p: Record<string, never>) => void;
   enviar_mensaje: (p: { texto: string }) => void;
+  votar_expulsion: (p: { objetivoId: string }) => void;
   volver_lobby: (p: Record<string, never>) => void;
   salir_sala: (p: Record<string, never>) => void;
 }
@@ -144,5 +147,6 @@ export interface EventosServidorACliente {
   }) => void;
   partida_terminada: (p: { podio: ResultadoRonda[] }) => void;
   galeria_partida: (p: { dibujos: DibujoGaleria[] }) => void;
+  expulsado: (p: Record<string, never>) => void;
   error_juego: (p: { codigo: string; mensaje: string }) => void;
 }

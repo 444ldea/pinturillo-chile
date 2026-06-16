@@ -131,6 +131,7 @@ interface ValorJuego {
   deshacerTrazo: () => void;
   limpiarLienzo: () => void;
   enviarMensaje: (texto: string) => void;
+  votarExpulsion: (objetivoId: string) => void;
   volverLobby: () => void;
   salirSala: () => void;
   limpiarError: () => void;
@@ -348,6 +349,24 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
 
     socket.on("galeria_partida", ({ dibujos }) => setGaleria(dibujos));
 
+    socket.on("expulsado", () => {
+      localStorage.removeItem(K_CODIGO);
+      navegar("/");
+      setCodigo(null);
+      setSala(null);
+      setSalaObjetivo(null);
+      setErrorEntrada(null);
+      setOpciones(null);
+      setMiPalabra(null);
+      setMascara(null);
+      setTrazos([]);
+      setMensajes([]);
+      setResultadosRonda(null);
+      setPodio(null);
+      setGaleria([]);
+      setError("Fuiste expulsado de la sala 👋");
+    });
+
     socket.on("error_juego", ({ codigo: cod, mensaje }) => {
       if (salaObjetivoRef.current && !codigoRef.current) {
         // error durante la entrada por link: lo mostramos como pantalla, no toast
@@ -362,8 +381,13 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
         }
       }
       setError(mensaje);
-      if (cod === "SALA_NO_EXISTE" || cod === "SALA_LLENA") {
+      if (
+        cod === "SALA_NO_EXISTE" ||
+        cod === "SALA_LLENA" ||
+        cod === "EXPULSADO"
+      ) {
         localStorage.removeItem(K_CODIGO);
+        setSalaObjetivo(null);
         if (!sala) setCodigo(null);
       }
     });
@@ -394,6 +418,7 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
       socket.off("ronda_terminada");
       socket.off("partida_terminada");
       socket.off("galeria_partida");
+      socket.off("expulsado");
       socket.off("error_juego");
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -514,6 +539,10 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
     socket.emit("enviar_mensaje", { texto: limpio });
   }, []);
 
+  const votarExpulsion = useCallback((objetivoId: string) => {
+    socket.emit("votar_expulsion", { objetivoId });
+  }, []);
+
   const volverLobby = useCallback(() => socket.emit("volver_lobby", {}), []);
 
   const salirSala = useCallback(() => {
@@ -588,6 +617,7 @@ export function ProveedorJuego({ children }: { children: ReactNode }) {
     deshacerTrazo,
     limpiarLienzo,
     enviarMensaje,
+    votarExpulsion,
     volverLobby,
     salirSala,
     limpiarError,

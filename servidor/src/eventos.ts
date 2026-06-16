@@ -30,6 +30,7 @@ import {
   cancelarGraciaDibujante,
   difundirEstado,
   elegirPalabra,
+  expulsarJugador,
   iniciarPartida,
   inicializarJuego,
   manejarDesconexionDibujante,
@@ -168,6 +169,10 @@ function manejarSalida(
 
   const eraDibujante = esDibujante(sala, socket.id);
   const enJuego = sala.estado !== "lobby" && sala.estado !== "fin_partida";
+
+  // Limpiar votos de expulsion ligados a este jugador (como objetivo y votante).
+  sala.votosExpulsion.delete(jugador.tokenJugador);
+  for (const s of sala.votosExpulsion.values()) s.delete(jugador.tokenJugador);
 
   if (esVoluntaria && !enJuego) {
     // Fuera de partida: lo quitamos del todo.
@@ -431,6 +436,30 @@ export function registrarEventos(io: IO): void {
 
       // Otros estados: chat publico normal (incluido el ex-dibujante).
       io.to(sala.codigo).emit("mensaje_chat", payload);
+    });
+
+    // -------------------------------------------------------- voto expulsion
+    socket.on("votar_expulsion", (p) => {
+      const ctx = contexto(socket);
+      if (!ctx) return;
+      const { sala, jugador } = ctx;
+      if (!permitir(datos(socket).ventanaMensajes, 10)) return;
+      const target = sala.jugadores.find((j) => j.id === String(p?.objetivoId));
+      if (!target || target.tokenJugador === jugador.tokenJugador) return;
+      const reales = jugadoresReales(sala).length;
+      if (reales < 3) return; // el voto solo aplica con 3+ jugadores
+
+      let set = sala.votosExpulsion.get(target.tokenJugador);
+      if (!set) {
+        set = new Set<string>();
+        sala.votosExpulsion.set(target.tokenJugador, set);
+      }
+      if (set.has(jugador.tokenJugador)) set.delete(jugador.tokenJugador);
+      else set.add(jugador.tokenJugador);
+
+      const umbral = Math.floor((reales - 1) / 2) + 1;
+      if (set.size >= umbral) expulsarJugador(sala, target);
+      else difundirEstado(sala);
     });
 
     // -------------------------------------------------------- volver al lobby

@@ -1,11 +1,24 @@
+import { useState } from "react";
 import { useJuego } from "../estado";
 import { Avatar } from "./Avatar";
 
 export function ListaJugadores() {
-  const { sala, miId, ultimoAcierto } = useJuego();
+  const { sala, miId, ultimoAcierto, votarExpulsion } = useJuego();
+  const [votados, setVotados] = useState<Set<string>>(new Set());
   if (!sala) return null;
 
   const ordenados = [...sala.jugadores].sort((a, b) => b.puntaje - a.puntaje);
+  const puedeVotar = sala.umbralExpulsion > 0;
+
+  function toggleVoto(id: string) {
+    votarExpulsion(id);
+    setVotados((prev) => {
+      const s = new Set(prev);
+      if (s.has(id)) s.delete(id);
+      else s.add(id);
+      return s;
+    });
+  }
 
   return (
     <div className="lista-jugadores">
@@ -14,6 +27,7 @@ export function ListaJugadores() {
         {ordenados.map((j, i) => {
           const esDibujante = sala.dibujanteId === j.id;
           const soyYo = j.id === miId;
+          const votos = sala.votosExpulsion[j.id] ?? 0;
           return (
             <li
               key={j.id}
@@ -39,6 +53,20 @@ export function ListaJugadores() {
                   </span>
                 )}
                 {!j.conectado && <span title="offline">⚠️</span>}
+                {puedeVotar && !soyYo && (
+                  <button
+                    className={`btn-expulsar ${votados.has(j.id) ? "votado" : ""}`}
+                    onClick={() => toggleVoto(j.id)}
+                    title="Votar para expulsar"
+                  >
+                    🚫
+                    {votos > 0 && (
+                      <span className="voto-conteo">
+                        {votos}/{sala.umbralExpulsion}
+                      </span>
+                    )}
+                  </button>
+                )}
               </span>
               <span className="puntos">{j.puntaje}</span>
               {ultimoAcierto &&

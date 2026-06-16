@@ -97,6 +97,16 @@ export function jugadoresReales(sala: Sala): Jugador[] {
 export function vistaPublica(sala: Sala): SalaPublica {
   const dibujante = sala.jugadores[sala.indiceDibujante];
   const enRonda = sala.estado === "dibujando" || sala.estado === "eligiendo";
+
+  // Votos de expulsion por jugador (solo los que tienen >0).
+  const votosExpulsion: Record<string, number> = {};
+  for (const j of sala.jugadores) {
+    const n = sala.votosExpulsion.get(j.tokenJugador)?.size ?? 0;
+    if (n > 0) votosExpulsion[j.id] = n;
+  }
+  const reales = jugadoresReales(sala).length;
+  const umbralExpulsion = reales >= 3 ? Math.floor((reales - 1) / 2) + 1 : 0;
+
   return {
     codigo: sala.codigo,
     estado: sala.estado,
@@ -108,6 +118,8 @@ export function vistaPublica(sala: Sala): SalaPublica {
     categoriaActual: sala.categoriaActual,
     mascara: sala.estado === "dibujando" ? sala.mascara : null,
     tiempoRestante: sala.tiempoRestante,
+    votosExpulsion,
+    umbralExpulsion,
   };
 }
 
@@ -160,6 +172,8 @@ export function crearSala(
     tiempoRestante: 0,
     timerId: null,
     galeria: [],
+    votosExpulsion: new Map<string, Set<string>>(),
+    baneados: new Set<string>(),
     palabrasUsadas: new Set<string>(),
     timerEleccion: null,
     timerFinRonda: null,
@@ -186,6 +200,15 @@ export function unirseOReconectar(
   const sala = salas.get(codigo);
   if (!sala) {
     return { ok: false, codigo: "SALA_NO_EXISTE", mensaje: "La sala no existe." };
+  }
+
+  // Jugadores expulsados no pueden volver a esta sala.
+  if (sala.baneados.has(token)) {
+    return {
+      ok: false,
+      codigo: "EXPULSADO",
+      mensaje: "Fuiste expulsado de esta sala.",
+    };
   }
 
   // Reconexion por token (mismo jugador que vuelve).
